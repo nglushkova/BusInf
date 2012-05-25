@@ -1,18 +1,21 @@
-<h1>Вход в личный кабинет</h1><br/>
+<div class="registration">
+  <h1>Вход в личный кабинет</h1><br/>
 
-<%= form_for(:session, :url => sessions_path) do |f| %>
-<div class="field">
-  <%= f.label "E-mail" %><br/>
-  <%= f.text_field :email %>
-</div>
-<div class="field">
-  <%= f.label "Пароль" %><br/>
-  <%= f.password_field :password %>
-</div>
+  <%= form_for(:session, :url => sessions_path) do |f| %>
+      <div>
+        <%= f.label "E-mail" %><br/>
+        <%= f.text_field :email, :class => "field" %>
+      </div>
+      <div>
+        <%= f.label "Пароль" %><br/>
+        <%= f.password_field :password, :class => "field" %>
+      </div>
       <br/>
-<div class="actions">
-  <%= f.submit "Sign in", :value => "Вход" %>
-</div>
-<% end %>
+      <div>
+        <%= f.submit "Sign in", :value => "Вход" %>
+      </div>
+  <% end %>
 
-<p><%= link_to "Регистрация", signup_path %></p>
+  <%= link_to "Регистрация", signup_path %>
+
+</div>

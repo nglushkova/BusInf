@@ -14,8 +14,18 @@
 //= require jquery_ujs
 //= require_tree .
 $(function(){
+    $("#butday").click(function(){
+        $("#sched_two_week:visible").hide(5);
+        $("#schedule:hidden").show(10);
+    });
+
+    $("#buttwoweek").click(function(){
+        $("#schedule:visible").hide(5);
+        $("#sched_two_week:hidden").show(10);
+        $("#twoweek").css(border, "5px solid #003355;");
+
+    });
     $("#user_user_birthday").datepicker();
-    $("#schedule").dataTable();
 
     $("#datepicker").datepicker({
         dayNames: ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'],

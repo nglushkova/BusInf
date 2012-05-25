@@ -247,7 +247,7 @@ ul#menu{
     font-size: 85%;
     float: right;
     z-index: 1000;
-    border: 1px solid #fff;
+    height: 14%;
 }
 .panelstudent{
     left: 855px;
@@ -258,15 +258,18 @@ ul#menu{
     width: 210px;
     font-size: 70%;
 }
+.exitlk{
+    color: #C9F1FF;
+    line-height: 2.5em;
+}
 .panelstudent a, .panelteacher a{
     text-decoration: none;
     color: #fff;
 }
 .panelleft{
-    width: 305px;
+    width: 30%;
     height: 800px;
     margin-left: 0;
-    border: 1px solid #111;
     float: left;
 }
 .calls{
@@ -276,10 +279,9 @@ ul#menu{
    margin: 0 10% 0;
 }
 .panelright{
-    width: 69%;
+    width: 69.5%;
     height: 800px;
     margin-left: 0;
-    border: 1px solid #111;
     float: right;
 }
 
@@ -347,13 +349,31 @@ background-color: #8dbdd8;
     float: right;
     left: 20%;
 }
-.but_sched{
+.buttons{
     display: inline;
+    padding: 0 5px 0 5px;
     text-align: center;
+
+}
+.but_sched{
+    font: 90% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    background-color: #fff;
     border: 5px solid #207DB0;
     border-radius: 5px;
-    padding: 0 5px 0 5px;
+    width: 110px;
+    color: #606060;
 }
 .but_sched_active{
     border: 5px solid #003355;
+}
+.tdweek{
+    width: 4%;
+    text-align: center;
+}
+.tdday{
+    width: 16%;
+    vertical-align: top;
+    overflow: hidden;
+    font-size: 70%;
+    text-overflow: ellipsis;
 }

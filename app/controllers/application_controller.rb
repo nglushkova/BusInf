@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
     @couples = Couple.all
   end
 
-  helper_method :pages_path, :list_calls, :list_couples
+  def couple_twoweek(gr, week, day)
+    @couples = Couple.find_by_sql("SELECT cell_skeds.start_time AS time, disciplines.disc_name AS disc FROM couples INNER JOIN cell_skeds ON couples.cell_sked_id=cell_skeds.id INNER JOIN disciplines ON couples.discipline_id=disciplines.id WHERE (couples.group_id="+ gr +") AND (couples.couple_week="+ week + ") AND (couples.couple_dayweek="+day+")")
+  end
+
+  helper_method :pages_path, :list_calls, :list_couples, :couple_twoweek
 end
