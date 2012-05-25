@@ -1,0 +1,27 @@
+<h1>Список групп</h1><br/>
+<p id="notice"><%= notice %></p><br/>
+
+<table>
+  <tr>
+    <th>Специальность</th>
+    <th>Курс</th>
+    <th>Шифр</th>
+    <th>Количество студентов</th>
+  </tr>
+
+<% @groups.each do |group| %>
+  <tr>
+    <td><%= group.speciality_id %></td>
+    <td><%= group.gr_course %></td>
+    <td><%= group.gr_cipher %></td>
+    <td><%= group.gr_quantity %></td>
+    <td><%= link_to 'Посмотреть', group %></td>
+    <td><%= link_to 'Редактировать', edit_group_path(group) %></td>
+    <td><%= link_to 'Удалить', group, confirm: 'Действительно удалить?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить группу', new_group_path %>

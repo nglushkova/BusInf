@@ -1,0 +1,21 @@
+<h1>Listing couples</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @couples.each do |couple| %>
+  <tr>
+    <td><%= link_to 'Show', couple %></td>
+    <td><%= link_to 'Edit', edit_couple_path(couple) %></td>
+    <td><%= link_to 'Destroy', couple, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Couple', new_couple_path %>

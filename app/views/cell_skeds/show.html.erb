@@ -1,0 +1,6 @@
+<p>№ п/п: <%= @cell_skeds.number_couple %></p><br/>
+<p>Начало занятия: <%= @cell_skeds.start_time %></p><br/>
+<p>Конец занятия: <%= @cell_skeds.end_time %></p><br/>
+
+<%= link_to 'Редактировать', edit_cell_sked_path(@cell_sked) %> |
+<%= link_to 'Назад', cell_skeds_path %>

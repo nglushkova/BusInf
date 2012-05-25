@@ -1,0 +1,33 @@
+<h1>Список студентов</h1><br/>
+<p id="notice"><%= notice %></p><br/>
+
+<table>
+  <tr>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Отчество</th>
+    <th>Группа</th>
+    <th>Староста</th>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.stud_surname %></td>
+    <td><%= student.stud_name %></td>
+    <td><%= student.stud_secondname %></td>
+    <td><%= student.group_id %></td>
+    <% if student.stud_captain == true %>
+        <td>Да</td>
+    <% else %>
+        <td>Нет</td>
+    <% end %>
+    <td><%= link_to 'Посмотреть', student %></td>
+    <td><%= link_to 'Редактировать', edit_student_path(student) %></td>
+    <td><%= link_to 'Удалить', student, confirm: 'Действительно удалить?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Добавить студента', new_student_path %>

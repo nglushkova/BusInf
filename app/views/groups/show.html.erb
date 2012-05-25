@@ -1,0 +1,8 @@
+<p>Специальность: <%= @group.speciality_id %></p><br/>
+<p>Курс: <%= @group.gr_course %></p><br/>
+<p>Шифр: <%= @group.gr_cipher %></p><br/>
+<p>Количество студентов: <%= @group.gr_quantity %></p>
+
+
+<%= link_to 'Редактировать', edit_group_path(@group) %> |
+<%= link_to 'Назад', groups_path %>

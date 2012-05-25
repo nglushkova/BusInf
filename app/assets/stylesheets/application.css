@@ -1,0 +1,359 @@
+*{
+    margin: 0 auto;
+}
+html{
+    background: #fff;
+    font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    margin: 0px 0px;
+    min-width: 1000px;
+}
+a{
+    color: #207DB0;
+}
+hr{
+    background: #207DB0;
+    height: 1px;
+}
+dd{
+    padding-left: 30px;
+}
+.head{
+    background: #27568C;
+    text-align: center;
+}
+div.contact{
+    position: absolute;
+    right: 10px;
+    top: 2px;
+}
+#cont{
+    margin: 2px 0 0 0;
+    padding: 0;
+    font-size: 80%;
+}
+#cont li.first.top-level-items{border-width: 0;}
+#cont li{
+    float: left;
+    list-style: none;
+    border: none;
+}
+#cont li a{
+    display: block;
+    padding: 1px 6px;
+    text-decoration: none;
+    color: #ffffff;
+    white-space: nowrap;
+}
+#cont li.top-level-items{
+    border: solid #ffffff;
+    border-width: 0 0 0 1px;
+}
+.main{
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 10%;
+    padding-right: 0px;
+    padding-left: 0px;
+    min-height: 500px;
+    font-size: 110%;
+    color: #606060;
+}
+.main h1{
+    font-style: italic;
+    font-size: 150%;
+    color: #27568C;
+    text-shadow: #cccccc 3px 3px 3px;
+}
+div.basement{
+    height: 70px;
+    background: #27568C;
+    text-align: center;
+    line-height: 3em;
+    border-top: 10px solid #ffffff;
+    font-size: 80%;
+    color: #fff;
+}
+#up{
+    float: left;
+    padding: 10px 0 0 10px;
+}
+/*╤Б╤В╨╕╨╗╨╕ ╨╝╨╡╨╜╤О*/
+
+#menu{
+    float: left;
+    width: 100%;
+    height: 75px;
+    position: relative;
+    margin: 0 0 40px;
+    background-color: #27568C;
+    min-width: 1000px;
+    color: #C9F1FF;
+}
+ul#menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#menu .select, #menu .current{
+    margin-left: 5%;
+    padding: 0;
+    list-style: none;
+    display: block;
+}
+#menu li{
+    font-family: Calibri, sans-serif;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    height: auto;
+}
+#menu .select a, #menu .current a{
+    display: block;
+    height: 40px;
+    float: left;
+    background: url("nav.png") no-repeat left top;
+    padding: 0 10px 0 10px;
+    text-decoration: none;
+    font-size: 85%;
+    color: #606060;
+    line-height: 40px;
+    white-space: nowrap;
+    margin-right: 2px;
+    position: relative;
+    z-index: 500;
+    text-decoration: blink;
+}
+#menu .select a b, #menu .current a b, #menu .select a .selected{
+    height: 100%;
+    display: block;
+   /* background: url("nav.png") no-repeat right top;*/
+    padding: 0 20px 0 15px;
+    color: #606060;
+}
+#menu .select a:hover, #menu .select li:hover a {
+    background-position: 0 -50px;
+    cursor: pointer;
+    color: #C9F1FF;
+
+}
+#menu .select a:hover b, #menu .select li:hover a b{
+    background-position: 100%, -50px;
+    color: #C9F1FF;
+
+}
+#menu .sub{
+    display: none;
+}
+#menu .current a{
+    background-position: 0 -50px;
+    border-color: #046;
+    color: #C9F1FF;
+}
+#menu .current li a b{
+    background-position: 100% -50px;
+    color: #fff;
+}
+#menu .select li a:hover{
+    color: #C9F1FF;
+}
+#menu .sub li a:hover, #menu .select a:hover .sub li a:hover, #menu .select li:hover .sub li a:hover, #menu .sub_active .current_sub a, #menu .sub_active a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+#menu .select li a:hover .sub, #menu .select li:hover .sub, #menu .sub_active{
+    display: block;
+    position: absolute;
+    width: 95%;
+    min-width: 950px;
+    height: 35px;
+    top: 40px;
+    left: 0;
+    background: #006798;
+    padding: 0;
+    z-index: 100;
+    margin-left: 10px;
+}
+#menu .sub_active{
+    z-index: 10;
+}
+#menu .sub, #menu .sub_active{
+    margin: 0;
+    padding: 0 0 0 5%;
+    list-style: none;
+}
+* html #menu .sub_active, * html .select a:hover .sub{
+    z-index: -1;
+    margin-top: 1px;
+}
+#menu .sub_active a{
+    height: 25px;
+    float: left;
+    text-decoration: none;
+    line-height: 24px;
+    white-space: nowrap;
+    font-weight: normal;
+}
+#menu .sub_active a, #menu .select a:hover .sub li a, #menu .select li:hover .sub li a{
+    display: inline;
+    background: none;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 13px;
+    width: auto;
+    white-space: nowrap;
+    font-weight: normal;
+    border: 0;
+    color: #C9F1FF;
+    height: 35px;
+    line-height: 35px;
+}
+#menu .current li a .exit{
+    left: 800px;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 5%;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+.panelstudent, .panelteacher{
+    position: absolute;
+    color: #fff;
+    font-size: 85%;
+    float: right;
+    z-index: 1000;
+    border: 1px solid #fff;
+}
+.panelstudent{
+    left: 855px;
+    width: 140px;
+}
+.panelteacher{
+    left: 790px;
+    width: 210px;
+    font-size: 70%;
+}
+.panelstudent a, .panelteacher a{
+    text-decoration: none;
+    color: #fff;
+}
+.panelleft{
+    width: 305px;
+    height: 800px;
+    margin-left: 0;
+    border: 1px solid #111;
+    float: left;
+}
+.calls{
+    text-align: center;
+    padding: 0 20px 0;}
+.calls p{
+   margin: 0 10% 0;
+}
+.panelright{
+    width: 69%;
+    height: 800px;
+    margin-left: 0;
+    border: 1px solid #111;
+    float: right;
+}
+
+/* tables */
+#schedule {
+	font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+	background-color: #f0f0f0;
+	margin: 5%;
+	font-size: 8pt;
+	width: 90%;
+	text-align: left;
+    border-spacing: 0;
+    border: 4px double #111;
+    border-collapse: collapse;
+}
+#schedule thead tr th{
+	background-color: #e6EEEE;
+	border: 1px solid #111;
+	font-size: 8pt;
+	padding: 4px;
+    text-align: center;
+}
+#schedule tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+.field_group{
+    visibility: hidden;
+}
+.menuuser{
+    width: 100%;
+    height: 300px;
+}
+.avatar {
+    width: 70px;
+    border: 0;
+    margin-bottom: -15px;
+}
+.field{
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    width: 250px;
+}
+.zvez{
+    color: #ff0000;
+}
+.actions{
+    font-size: 110%;
+    margin-left: 15%;
+    padding: 10px;
+}
+.registration{
+    padding: 0 10% 0 10%;
+}
+.button_schedule{
+    display: inline-block;
+    float: right;
+    left: 20%;
+}
+.but_sched{
+    display: inline;
+    text-align: center;
+    border: 5px solid #207DB0;
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+}
+.but_sched_active{
+    border: 5px solid #003355;
+}

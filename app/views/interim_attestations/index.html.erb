@@ -1,0 +1,21 @@
+<h1>Listing interim_attestations</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @interim_attestations.each do |interim_attestation| %>
+  <tr>
+    <td><%= link_to 'Show', interim_attestation %></td>
+    <td><%= link_to 'Edit', edit_interim_attestation_path(interim_attestation) %></td>
+    <td><%= link_to 'Destroy', interim_attestation, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Interim attestation', new_interim_attestation_path %>

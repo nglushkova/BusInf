@@ -1,0 +1,26 @@
+<h1>Расписание звонков</h1>
+
+  <p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th>№ п/п</th>
+    <th>Начало</th>
+    <th>Конец</th>
+  </tr>
+
+<% @cell_skeds.each do |cell_sked| %>
+  <tr>
+    <td><%= cell_sked.number_couple %></td>
+    <td><%= cell_sked.start_time %></td>
+    <td><%= cell_sked.end_time %></td>
+    <td><%= link_to 'Посмотреть', cell_sked %></td>
+    <td><%= link_to 'Редактировать', edit_cell_sked_path(cell_sked) %></td>
+    <td><%= link_to 'Удалить', cell_sked, confirm: 'Действительно удалить?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Новый', new_cell_sked_path %>

@@ -1,0 +1,22 @@
+<%= form_for(@speciality) do |f| %>
+  <%= render 'shared/error_message', :target => @speciality %>
+    <table>
+      <tbody>
+      <tr>
+        <td width="300px"><%= f.label "Название специальности" %></td>
+        <td><%= f.text_field :spec_name, :class => "field" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Сокращение" %></td>
+        <td><%= f.text_field :spec_redaction, :class => "field" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Описание" %></td>
+        <td><%= f.text_area :spec_description, :class => "field" %></td>
+      </tr></tbody>
+    </table>
+
+  <div>
+    <%= f.submit :value=>"Сохранить", :class => "actions" %>
+  </div>
+<% end %>

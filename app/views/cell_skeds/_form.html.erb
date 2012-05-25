@@ -1,0 +1,20 @@
+<%= form_for(@cell_sked) do |f| %>
+  <%= render 'shared/error_message', :target => @cell_sked %>
+
+    <div class="field">
+      <%= f.label "№ п/п" %>
+      <%= f.text_field :number_couple %>
+    </div>
+    <div class="field">
+      <%= f.label "Начало занятия" %>
+      <%= f.time_select :start_time, {:include_blank => true} %>
+    </div>
+    <div class="field">
+      <%= f.label "Конец занятия" %>
+      <%= f.time_select :end_time, {:include_blank => true} %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

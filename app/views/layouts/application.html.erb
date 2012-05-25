@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jquetyui/1.7.2/temes/redmond/jquety-ui.css", "application" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquty/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8"/>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    'application', :media => 'screen' %>
+  <%= stylesheet_link_tag 'jquery-calendar', :media => 'screen' %>
+  <!--[if lt IE 8]><%= stylesheet_link_tag 'ie' %><![endif]-->
+
+  <meta name="keywords" content="ВятГУ, высшее образование в Кирове, вузы Кирова, кафедра бизнес-информатики, абитуриенты, студеты Кирова, политех, прикладная информатика, бизнес-информатика" inline=""/>
+</head>
+<body>
+<div class="head">
+  <a href="http://www.vyatsu.ru"><%= image_tag('embl.jpg', :alt => "Вятский государственный университет") %></a>
+  <%= link_to image_tag('kaf.jpg', :alt => "Кафедра бизнес-информатики"), root_path %>
+</div>
+<div class="contact">
+  <ul id="cont">
+    <li class="first top-level-items">
+      <%= link_to "Контакты", contact_path %>
+    </li>
+    <li class="top-level-items">
+      <%= link_to "Задать вопрос", "#", :id => "question" %>
+      <div id="quest">
+        <form>
+          <fieldset id="inputs">
+            <input id="username" type="email" name="Email" placeholder="Ваш e-mail адрес" required="">
+          </fieldset>
+          <fieldset id="actions">
+            <input type="submit" id="submit" value="Ок">
+          </fieldset>
+      </form>
+          </div>
+    </li>
+  </ul>
+</div>
+
+  <div id="menu">
+    <% if controller.controller_name == 'pages' %>
+        <ul class="current">
+        <li><b><%= link_to "О кафедре", root_path %></b>
+          <ul class="sub_active">
+    <% else %>
+        <ul class="select">
+        <li><b><%= link_to "О кафедре", root_path %></b>
+          <ul class="sub">
+    <% end %>
+    <% if controller.action_name == 'home' %>
+        <li class="current_sub"><b><%= link_to "История кафедры", root_path %></b></li>
+    <% else %>
+        <li><%= link_to "История кафедры", root_path %></li>
+    <% end %>
+    <% if controller.action_name == 'teacherpage' %>
+        <li class="current_sub"><b><%= link_to "Преподавательский состав", faculty_path %></b></li>
+    <% else %>
+        <li><%= link_to "Преподавательский состав", faculty_path %></li>
+    <% end %>
+    <li><a href="">Направления подготовки</a></li> <!-- <<<== активная страница -->
+    </ul>
+    </li>
+    </ul>
+
+        <ul class="select">
+		<li><a href=""><b>Образовательная деятельность</b></a>
+			<ul class="sub">
+				<li><a href="">Направления подготовки</a></li>
+				<li><a href="">Прикладная информатика</a></li>
+				<li><a href="">Бизнес-информатика</a></li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class="select">
+		<li><a href=""><b>Научная деятельность</b></a>
+			<ul class="sub">
+				<li><a href="">Методические материалы</a></li>
+				<li><a href="">Публикации</a></li>
+			</ul>
+		</li>
+	</ul>
+
+    <% if signed_in? %>
+        <% @page = pages_path(current_user.id, controller.controller_name, controller.action_name) %>
+    <% else %>
+        <% @page = signin_path %>
+    <% end %>
+
+    <% if controller.controller_name == 'sessions' || controller.controller_name == 'users' %>
+        <ul class="current">
+             <li><b><%= link_to "Личный кабинет", @page %></b>
+                <ul class="sub_active">
+    <% else %>
+        <ul class="select">
+          <li><b><%= link_to "Личный кабинет", @page %></b>
+            <ul class="sub">
+    <% end %>
+    <% if signed_in? %>
+        <% if controller.controller_name == 'users' && controller.action_name == 'show' %>
+            <li class="current_sub"><b><%= link_to "Расписание", @page %></b></li>
+        <% else %>
+            <li><%= link_to "Расписание", @page %></li>
+        <% end %>
+        <li><%= link_to "Личные данные" %></li>
+        <li class="exit"><%= link_to "Выход", signout_path, :method => :delete %></li>
+    <% else %>
+        <% if controller.controller_name == 'sessions' && controller.action_name == 'new' %>
+            <li class="current_sub"><%= link_to "Вход", signin_path %></li>
+        <% else %>
+            <li><%= link_to "Вход", signin_path %></li>
+        <% end %>
+        <% if controller.controller_name == 'users' && controller.action_name == 'new' %>
+                <li class="current_sub"><%= link_to "Pегистрация пользователя", signup_path %></li>
+        <% else %>
+            <li><%= link_to "Pегистрация пользователя", signup_path %></li>
+        <% end %>
+    <% end %>
+    </ul>
+    </li>
+	</ul>
+  </div>
+  <% if signed_in? %>
+      <% if current_user.user_status == "student" %>
+        <div class="panelstudent">
+            <p>Привет, <%= current_user.user_name %></p>
+            <p>Твой статус: студент</p>
+        <% else%>
+<div class="panelteacher">
+            <p>Здравствуйте, <%= current_user.user_name + ' ' + current_user.user_secondname %></p>
+            <p>Ваш статус: преподаватель</p>
+        <% end %>
+        <br/>
+        <p><%= link_to "Выход", signout_path, :method => :delete %></p>
+      </div>
+  <% end %>
+  <div class="main">
+
+    <%= yield %>
+  </div>
+<section>
+  <%= debug(params) if Rails.env.development? %>
+</section>
+<div class="basement">
+  <a href="#" id="clickup"><%= image_tag('up.png', :alt => "Вверх", :id => "up", :title => "Наверх" ) %></a>
+  © ВятГУ, Кафедра бизнес-информатики, 2012
+</div>
+</body>
+</html>

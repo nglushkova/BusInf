@@ -1,0 +1,5 @@
+  <% @teachers = Teacher.all %>
+
+  <% @teachers.each do |teacher| %>
+      <p><%= teacher.teach_surname + ' ' + teacher.teach_name + ' ' + teacher.teach_secondname + ' - ' + teacher.teach_rank %></p><br/>
+  <% end %>

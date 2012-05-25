@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<div class="panelleft">
+  <div id="datepicker"></div><br/>
+  <div class="menuuser">
+
+    <% if current_user.user_status == "student" %>
+        <ul><li><%= gravatar_image_tag current_user.user_email, :class => "avatar" %></li>
+        <li><%= link_to "Сообщения", '' %></li>
+        <li><%= link_to "События", '' %></li></ul>
+    <% end %>
+
+  </div>
+  <div class="calls">
+    <h4>Расписание звонков:</h4><br/>
+    <% @calls = list_calls  %>
+    <% @calls.each do |call| %>
+        <p><%= call.start_time.to_s(:time) + ' - ' + call.end_time.to_s(:time) %></p>
+    <% end %>
+  </div>
+</div>
+<% @couples = list_couples %>
+<div class="panelright">
+  <div id="butschedule" class="button_schedule">
+    <ul>
+    <li id="butday" class="but_sched but_sched_active">на день</li>
+    <li id="butweek" class="but_sched">на неделю</li>
+    <li id="buttwoweek" class="but_sched">на 2 недели</li>
+    </ul>
+  </div>
+  <table id="schedule" border="1">
+    <thead>
+    <tr>
+      <th width="10%">Время</th>
+      <th width="50%">Дисциплина</th>
+      <th width="10%">Аудитория</th>
+      <th width="30%">Преподаватель</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if current_user.user_status == "student" %>
+        <% @coupl = Couple.find_by_sql("SELECT cell_skeds.start_time AS time, couples.discipline_id, couples.couple_cabinet, couples.couple_teacher FROM couples INNER JOIN cell_skeds ON couples.cell_sked_id=cell_skeds.id WHERE couples.group_id=" + current_user.group_id.to_s) %>
+        <% @coupl.each do |couple| %>
+            <tr>
+              <td align="center"><%= couple.time.to_s %></td>
+              <td><%= couple.discipline_id.to_s %></td>
+              <td align="center"><%= couple.couple_cabinet %></td>
+              <td><%= couple.couple_teacher %></td>
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

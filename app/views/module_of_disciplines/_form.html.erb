@@ -1,0 +1,17 @@
+<%= form_for(@module_of_discipline) do |f| %>
+  <% if @module_of_discipline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@module_of_discipline.errors.count, "error") %> prohibited this module_of_discipline from being saved:</h2>
+
+      <ul>
+      <% @module_of_discipline.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_for(@teacher) do |f| %>
+    <%= render 'shared/error_message', :target => @teacher %>
+
+    <div class="field">
+      <%= f.label "Фамилия" %>
+      <%= f.text_field :teach_surname %>
+    </div>
+    <div class="field">
+      <%= f.label "Имя" %>
+      <%= f.text_field :teach_name %>
+    </div>
+    <div class="field">
+      <%= f.label "Отчество" %>
+      <%= f.text_field :teach_secondname %>
+    </div>
+    <div class="field">
+      <%= f.label "Звание" %>
+      <%= f.text_area :teach_rank, :rows => 2 %>
+    </div>
+    <div class="field">
+      <%= f.label "Описание" %>
+      <%= f.text_area :teach_description, :rows => 6 %>
+    </div>
+    <div class="field">
+      <%= f.label "Фото" %>
+      <%= f.file_field :teach_img %>
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit :value => "Сохранить"%>
+  </div>
+<% end %>

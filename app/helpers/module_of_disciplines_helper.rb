@@ -1,0 +1,2 @@
+module ModuleOfDisciplinesHelper
+end

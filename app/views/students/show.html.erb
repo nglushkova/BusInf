@@ -1,0 +1,10 @@
+<p>Фамилия: <%= @student.stud_surname %></p><br/>
+<p>Имя: <%= @student.stud_name %></p><br/>
+<p>Отчество: <%= @student.stud_secondname %></p><br/>
+<p>Группа: <%= @student.group_id %></p><br/>
+<% if @student.stud_captain == true %>
+    Староста группы
+<% end %>
+
+<%= link_to 'Редактировать', edit_student_path(@student) %> |
+<%= link_to 'Назад', students_path %>

@@ -1,0 +1,26 @@
+<%= form_for(@group) do |f| %>
+  <%= render 'shared/error_message', :target => @group %>
+    <table>
+      <tbody>
+      <tr>
+        <td width="300px"><%= f.label "Специальность" %></td>
+        <td><%= f.select :speciality_id, Speciality.all.collect {|s| [s.spec_name, s.id]}, {:include_blank => 'Выберите специальность'}, {:class => "field"} %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Курс" %></td>
+        <td><%= f.select :gr_course, ["1", "2", "3", "4", "5"], {:include_blank => "Выберите курс"}, {:class => "field"} %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Шифр" %></td>
+        <td><%= f.text_field :gr_cipher, :class => "field" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Количество студентов" %></td>
+        <td><%= f.text_field :gr_quantity, :class => "field" %></td>
+      </tr>
+      </tbody>
+    </table>
+  <div class="actions">
+    <%= f.submit :value => "Сохранить", :class => "actions" %>
+  </div>
+<% end %>
