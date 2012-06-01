@@ -1,17 +1,30 @@
 <%= form_for(@competence) do |f| %>
-  <% if @competence.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@competence.errors.count, "error") %> prohibited this competence from being saved:</h2>
+    <% if @competence.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@competence.errors.count, "error") %> prohibited this competence from being saved:</h2>
 
-      <ul>
-      <% @competence.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @competence.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label "Код компетенции" %>
+      <%= f.text_field :comp_group %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label "Название компетенции" %>
+      <%= f.text_field :comp_name %>
+    </div>
+
+
+
+    <div class="actions">
+      <%= f.submit "Сохранить" %>
+    </div>
 <% end %>
+

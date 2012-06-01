@@ -78,6 +78,12 @@ div.basement{
     float: left;
     padding: 10px 0 0 10px;
 }
+
+.hide{
+    display:none;
+}
+
+
 /*╤Б╤В╨╕╨╗╨╕ ╨╝╨╡╨╜╤О*/
 
 #menu{

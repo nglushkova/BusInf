@@ -1,4 +1,4 @@
-<h1>Список специальностей</h1><br/>
+<h1>Направления подготовки</h1><br/>
 <p id="notice"><%= notice %></p><br/>
 
 <table>
@@ -7,15 +7,15 @@
     <th>Сокращение</th>
   </tr>
 
-<% @specialities.each do |speciality| %>
-  <tr>
-    <td><%= speciality.spec_name %></td>
-    <td><%= speciality.spec_redaction %></td>
-    <td><%= link_to 'Посмотреть', speciality %></td>
-    <td><%= link_to 'Редактировать', edit_speciality_path(speciality) %></td>
-    <td><%= link_to 'Удалить', speciality, confirm: 'Действительно удалить?', method: :delete %></td>
-  </tr>
-<% end %>
+  <% @specialities.each do |speciality| %>
+      <tr>
+        <td><%= speciality.spec_name %></td>
+        <td><%= speciality.spec_redaction %></td>
+        <td><%= link_to 'Подробнее', speciality %></td>
+        <td><%= link_to 'Редактировать', edit_speciality_path(speciality) %></td>
+        <td><%= link_to 'Удалить', speciality, confirm: 'Действительно удалить?', method: :delete %></td>
+      </tr>
+  <% end %>
 </table>
 
 <br />

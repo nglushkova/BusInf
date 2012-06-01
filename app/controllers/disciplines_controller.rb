@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DisciplinesController < ApplicationController
   # GET /disciplines
   # GET /disciplines.json
@@ -33,6 +35,7 @@ class DisciplinesController < ApplicationController
   end
 
   # GET /disciplines/1/edit
+
   def edit
     @discipline = Discipline.find(params[:id])
   end
@@ -80,4 +83,8 @@ class DisciplinesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+
 end

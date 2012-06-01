@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CompetencesController < ApplicationController
   # GET /competences
   # GET /competences.json
@@ -44,7 +46,7 @@ class CompetencesController < ApplicationController
 
     respond_to do |format|
       if @competence.save
-        format.html { redirect_to @competence, notice: 'Competence was successfully created.' }
+        format.html { redirect_to @competence, notice: 'Компетенция успешно добавлена' }
         format.json { render json: @competence, status: :created, location: @competence }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class CompetencesController < ApplicationController
 
     respond_to do |format|
       if @competence.update_attributes(params[:competence])
-        format.html { redirect_to @competence, notice: 'Competence was successfully updated.' }
+        format.html { redirect_to @competence, notice: 'Компетенция успешно обновлена' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

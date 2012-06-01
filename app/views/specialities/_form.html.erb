@@ -1,5 +1,5 @@
 <%= form_for(@speciality) do |f| %>
-  <%= render 'shared/error_message', :target => @speciality %>
+    <%= render 'shared/error_message', :target => @speciality %>
     <table>
       <tbody>
       <tr>
@@ -16,7 +16,7 @@
       </tr></tbody>
     </table>
 
-  <div>
-    <%= f.submit :value=>"Сохранить", :class => "actions" %>
-  </div>
+    <div>
+      <%= f.submit :value=>"Сохранить", :class => "actions" %>
+    </div>
 <% end %>
