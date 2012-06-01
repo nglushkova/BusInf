@@ -1,15 +1,8 @@
 <p id="notice"><%= notice %></p>
+<% @week = week_now %>
 <div class="panelleft">
   <div id="datepicker"></div><br/>
-  <div class="menuuser">
 
-    <% if current_user.user_status == "student" %>
-        <ul><li><%= gravatar_image_tag current_user.user_email, :class => "avatar" %></li>
-        <li><%= link_to "Сообщения", '' %></li>
-        <li><%= link_to "События", '' %></li></ul>
-    <% end %>
-
-  </div>
   <div class="calls">
     <h4>Расписание звонков:</h4><br/>
     <% @calls = list_calls  %>
@@ -20,78 +13,37 @@
 </div>
 <% @couples = list_couples %>
 <div class="panelright">
-  <div id="butschedule" class="button_schedule">
-    <ul>
-      <li class="buttons" id="day"><button id="butday" class="but_sched but_sched_active">на день</button></li>
-      <li class="buttons" id="week"><button id= "butweek" class="but_sched">на неделю</button></li>
-      <li class="buttons" id="twoweek"><button id=buttwoweek class="but_sched">на 2 недели</button></li>
-    </ul>
+
+  <div class="date_today" style="text-decoration: underline">Сегодня: <%= Russian::strftime(Date.today, "%A %d %B %Y")  %>
+    <% if @week == 1 %>
+        <%= " " + "I неделя" %>
+    <% else %>
+        <%= " " + "II неделя" %>
+    <% end %>
   </div>
   <br/>
-  <table id="schedule" border="1">
-    <thead>
-    <tr>
-      <th width="10%">Время</th>
-      <th width="50%">Дисциплина</th>
-      <th width="10%">Аудитория</th>
-      <th width="20%">Преподаватель</th>
-      <th width="10%">Примечание</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% if current_user.user_status == "student" %>
-        <% @coupl = Couple.find_by_sql("SELECT cell_skeds.start_time AS time, disciplines.disc_name AS disc, couples.couple_cabinet, couples.couple_teacher, couples.couple_week, couples.couple_dayweek, couples.couple_comment FROM couples INNER JOIN cell_skeds ON couples.cell_sked_id=cell_skeds.id INNER JOIN disciplines ON couples.discipline_id=disciplines.id WHERE couples.group_id=" + current_user.group_id.to_s) %>
-        <% @coupl.each do |couple| %>
-            <tr>
-              <td align="center"><%= couple.time.to_s %></td>
-              <td><%= couple.disc %></td>
-              <td align="center"><%= couple.couple_cabinet %></td>
-              <td><%= couple.couple_teacher %></td>
-              <td><%= couple.couple_comment %></td>
-            </tr>
-        <% end %>
-    <% end %>
-    </tbody>
-  </table>
-  <br/>
-  <table id="sched_two_week" border="1px" style="display: none">
-    <thead>
-    <tr>
-    <th></th>
-    <th class='tdday'>Пн</th>
-    <th class='tdday'>Вт</th>
-    <th class='tdday'>Ср</th>
-    <th class='tdday'>Чт</th>
-    <th class='tdday'>Пт</th>
-    <th class='tdday'>Cб</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td class="tdweek">I<br/>н<br/>е<br/>д<br/>е<br/>л<br/>я</td>
-      <% for i in 1..6 %>
-          <td class="tdday">
-            <% @coup = couple_twoweek(current_user.group_id.to_s, (1).to_s, (i).to_s )%>
-            <% @coup.each do |c| %>
-                <p><%= c.time.to_s + ' ' + c.disc %></p>
-            <% end %>
-          </td>
+  <% if current_user.user_status == "student" %>
+      <%= render 'student' %>
+  <% end %>
+  <div class="event">
+    <p style="text-decoration: underline">События сегодня:</p>
+    <% @event = event_list %>
+    <table border="0" class="tab_event">
+      <tbody>
+      <% @event.each do |ev| %>
+          <tr>
+            <td width="12%"><%= ev.start_time %></td>
+            <td width="83%"><%= ev.ev_text %></td>
+            <td width="5%" style="font-size: 60%">Редактировать</td>
+          </tr>
       <% end %>
-    </tr>
-    <tr>
-      <td class="tdweek">II<br/>н<br/>е<br/>д<br/>е<br/>л<br/>я</td>
-      <% for i in 1..6 %>
-          <td class="tdday">
-            <% @coup = couple_twoweek(current_user.group_id.to_s, (2).to_s, (i).to_s )%>
-            <% @coup.each do |c| %>
-                <p><%= c.time.to_s + ' ' + c.disc %></p>
-            <% end %>
-          </td>
-      <% end %>
-    </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+    <%= link_to "Добавить событие >>", '', :class => "edit_link" %>
+    <div id="add_event">
+    </div>
+  </div>
+  <div class="event">
+    <p style="text-decoration: underline">Объявления:</p>
+  </div>
 </div>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

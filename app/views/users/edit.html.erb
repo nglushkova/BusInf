@@ -1,6 +1,83 @@
-<h1>Editing user</h1>
+<div class="registration">
+<%= form_for(@user) do |f| %>
+    <%= render 'shared/error_message', :target => @user %>
 
-<%= render 'form' %>
+<h1>Основная информация</h1><br/>
+    <table align="left">
+      <tbody>
+      <tr>
+        <td width="45%"><%= f.label "Фамилия" %></td>
+        <td><span class="zvez">*</span></td>
+        <td width="50%"><%= f.text_field :user_surname, :class => "field", :disabled => "disabled" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Имя" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.text_field :user_name, :class => "field", :disabled => "disabled" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Отчество" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.text_field :user_secondname, :class => "field", :disabled => "disabled" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Статус" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.select(:user_status, {"Студент" => "student", "Преподаватель" => "teacher"}, {:include_blank => 'Ваш статус'}, {:class => "field", :disabled => "disabled"} )%></td>
+      </tr>
+      <tr id="status" style="display: none;">
+        <td><%= f.label "Группа" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.select(:group_id, Group.all.collect { |g| [g.gr_cipher, g.id]}, { :include_blank => 'Выберите группу'}, {:class => "field"}, :disabled => "diisabled") %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Email" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.text_field :user_email, :class => "field" %><td/>
+      </tr>
+      <tr>
+        <td><%= f.label "Пароль" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.password_field :user_password, :class => "field" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Подтверждение пароля" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.password_field :user_password_confirmation, :class => "field" %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    </br><br/></br></br></br></br></br></br></br></br>
+    <h1>Дополнительная информация</h1><br/>
+    <table align="left">
+      <tbody>
+      <tr>
+        <td width="45%"><%= f.label "Дата рождения" %></td>
+        <td><span class="zvez">*</span></td>
+        <td><%= f.date_select(:user_birthday, {:order => [:day, :month, :year], :use_month_names => ['Январь', 'Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'], :start_year => 1930, :end_year => Time.now.year, :include_blank => true}) %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Фото" %></td>
+        <td></td>
+        <td> <%= f.file_field :user_avatar, :class => "field" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "ICQ" %></td>
+        <td></td>
+        <td> <%= f.text_field :user_icq, :class => "field" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Телефон" %></td>
+        <td></td>
+        <td> <%= f.text_field :user_phone, :class => "field" %></td>
+      </tr>
+      </tbody>
+    </table>
+    </br><br/></br></br></br><br/>
+    <%= f.submit :value => "Сохранить изменение", :class => "actions" %>
+<% end %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
+</div>

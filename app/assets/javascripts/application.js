@@ -20,22 +20,31 @@ $(function(){
     });
 
     $("#buttwoweek").click(function(){
+        $("#date:visible").hide(5);
         $("#schedule:visible").hide(5);
         $("#sched_two_week:hidden").show(10);
-        $("#twoweek").css(border, "5px solid #003355;");
-
-    });
+        $("#twoweek").css("border", "5px solid #003355;");
+     });
     $("#user_user_birthday").datepicker();
 
     $("#datepicker").datepicker({
-        dayNames: ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'],
+        dayNames: ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
         dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
         firstDay: 1,
         monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
         nextText: '>> ',
         prevText: '<<',
         showOtherMonths: true,
-        selectOtherMonths: true
+        selectOtherMonths: true,
+        dateFormat: 'DD dd MM yy',
+        onSelect: function(dateText, inst) {
+            var now = new Date();
+            $("#date:hidden").show(5);
+            $("#sched_two_week:visible").hide(5);
+            $("#schedule:hidden").show(5);
+            $("#date").val(dateText);
+
+        }
     });
 
     $("#clickup").click(function(){
@@ -61,4 +70,15 @@ $(function(){
             $("#user_group_id [value='']").attr("selected", "selected");
         };
     });
+
+
+    (function(){
+//        здесь можно написать скрит, который бдет выполняться сразу после загрузки страницы
+    })  ()  ;
+
+    $('#addRow1').click(function(){
+        var AddingRow1 = $('#table_1 tbody>#item').first();
+        console.log($('#table_1 tbody>#item'));
+        AddingRow1.clone(true).insertAfter('#table_1 tbody>#item:last');
+      });
 });
