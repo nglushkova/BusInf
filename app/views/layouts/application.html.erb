@@ -143,25 +143,28 @@
           <ul class="sub">
   <% end %>
   <% if signed_in? %>
-      <% if controller.controller_name == 'users' && controller.action_name == 'show' %>
-          <li class="current_sub"><b><%= link_to "Расписание", @page %></b></li>
-      <% else %>
-          <li><%= link_to "Расписание", @page %></li>
-      <% end %>
-      <li><%= link_to "Личные данные" %></li>
-      <li class="exit"><%= link_to "Выход", signout_path, :method => :delete %></li>
-  <% else %>
-      <% if controller.controller_name == 'sessions' && controller.action_name == 'new' %>
-          <li class="current_sub"><%= link_to "Вход", signin_path %></li>
-      <% else %>
-          <li><%= link_to "Вход", signin_path %></li>
-      <% end %>
-      <% if controller.controller_name == 'users' && controller.action_name == 'new' %>
-          <li class="current_sub"><%= link_to "Pегистрация пользователя", signup_path %></li>
-      <% else %>
-          <li><%= link_to "Pегистрация пользователя", signup_path %></li>
-      <% end %>
-  <% end %>
+        <% if controller.controller_name == 'users' && controller.action_name == 'show' %>
+            <li class="current_sub"><b><%= link_to "Расписание", @page %></b></li>
+        <% else %>
+            <li><%= link_to "Расписание", @page %></li>
+        <% end %>
+        <li><%= link_to "Личные данные", edit_user_path(current_user.id) %></li>
+        <% if current_user.user_status == 'teacher' %>
+            <li><%= link_to "Список студентов", '' %></li>
+            <li><%= link_to "Публикации", '' %></li>
+        <% end %>
+    <% else %>
+        <% if controller.controller_name == 'sessions' && controller.action_name == 'new' %>
+            <li class="current_sub"><%= link_to "Вход", signin_path %></li>
+        <% else %>
+            <li><%= link_to "Вход", signin_path %></li>
+        <% end %>
+        <% if controller.controller_name == 'users' && controller.action_name == 'new' %>
+                <li class="current_sub"><%= link_to "Pегистрация пользователя", signup_path %></li>
+        <% else %>
+            <li><%= link_to "Pегистрация пользователя", signup_path %></li>
+        <% end %>
+    <% end %>
   </ul>
   </li>
   </ul>
@@ -176,8 +179,7 @@
           <p>Здравствуйте, <%= current_user.user_name + ' ' + current_user.user_secondname %></p>
           <p>Ваш статус: преподаватель</p>
     <% end %>
-    <br/>
-    <p><%= link_to "Выход", signout_path, :method => :delete %></p>
+    <p class="exitlk"><%= link_to "Выход", signout_path, :method => :delete %></p>
     </div>
 <% end %>
 <div class="main">

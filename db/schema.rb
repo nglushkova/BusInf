@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120524193343) do
+ActiveRecord::Schema.define(:version => 20120601194354) do
 
   create_table "advertisements", :force => true do |t|
     t.date     "ad_date"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120524193343) do
     t.string   "couple_comment"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "couple_type"
   end
 
   create_table "disciplines", :force => true do |t|
@@ -131,8 +132,10 @@ ActiveRecord::Schema.define(:version => 20120524193343) do
     t.string   "spec_name"
     t.string   "spec_redaction"
     t.string   "spec_description"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "spec_description2"
+    t.string   "spec_exams"
   end
 
   create_table "students", :force => true do |t|
