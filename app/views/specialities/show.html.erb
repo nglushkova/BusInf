@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>Название: <%= @speciality.spec_name %></p><br/>
-<p>Сокращение: <%= @speciality.spec_reduction %></p><br/>
+<p>Сокращение: <%= @speciality.spec_redaction %></p><br/>
 <p>Описание: <%= @speciality.spec_description %></p><br/>
 
-
+<%= link_to 'Дисциплины специальности', disciplines_path %> |
 <%= link_to 'Редактировать', edit_speciality_path(@speciality) %> |
 <%= link_to 'Назад', specialities_path %>

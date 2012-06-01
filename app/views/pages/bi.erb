@@ -1,0 +1,5 @@
+<% @specialities = Speciality.all.find_spec(1) %>
+
+<% @specialities.each do |speciality| %>
+    <p><%= speciality.spec_name  %></p><br/>
+<% end %>

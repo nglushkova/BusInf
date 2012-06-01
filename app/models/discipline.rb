@@ -7,3 +7,14 @@ class Discipline < ActiveRecord::Base
   has_many :couples
   belongs_to :speciality
 end
+
+
+#public def publish_program(text)
+#
+#         m = File.new('app/assets/prog.html','a')
+#         m.puts(text)
+#
+#         m.close
+#
+#
+#       end

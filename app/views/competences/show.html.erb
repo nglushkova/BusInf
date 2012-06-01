@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Edit', edit_competence_path(@competence) %> |
-<%= link_to 'Back', competences_path %>
+<p>Код компетенции: <%= @competence.comp_group %></p><br/>
+<p>Название компетенции: <%= @competence.comp_name %></p><br/>
+
+
+
+<%= link_to 'Редактировать', edit_competence_path(@competence) %> |
+<%= link_to 'К списку компетенций', competences_path %>

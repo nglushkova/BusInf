@@ -1,5 +1,23 @@
+<h1>Сведения о дисциплине <%= @discipline.disc_name %></h1>
 <p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Edit', edit_discipline_path(@discipline) %> |
-<%= link_to 'Back', disciplines_path %>
+
+<p>Специальность: <%= @spec=Speciality.find(@discipline.specialty_id).spec_name %>  </p><br/>
+
+<p>Курс: <%= @discipline.disc_course %></p><br/>
+
+<p>Цикл дисциплин: <%= @discipline.disc_cycle %></p><br/>
+<p>Подцикл дисциплин: <%= @discipline.disc_partofcycle %></p><br/>
+
+
+<p>Цель курса: <%= @discipline.disc_objective %></p><br/>
+<p>Задачи курса: <%= @discipline.disc_tasks %></p><br/>
+
+
+
+<h2>Действия:</h2>
+<%= link_to 'Загрузить рабочую программу', edit_discipline_path(@discipline) %> |
+<%= link_to 'Скачать рабочую программу', edit_discipline_path(@discipline) %> |
+<%= link_to 'Редактировать рабочую программу', edit_discipline_path(@discipline) %> |
+<%= link_to 'К списку дисциплин', disciplines_path %>

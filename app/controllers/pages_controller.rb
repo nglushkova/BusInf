@@ -11,4 +11,13 @@ class PagesController < ApplicationController
   def teacherpage
     @title = "Преподавательский состав"
   end
+
+  def bi
+    @title = "Бизнес-информатика"
+  end
+
+  def pi
+    @title = "Прикладная информатика"
+  end
+
 end
