@@ -10,6 +10,7 @@ gem 'ruby-mysql'
 gem 'calendar_helper'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'paperclip'
+gem 'russian'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

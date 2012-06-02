@@ -1,17 +1,49 @@
-<%= form_for(@couple) do |f| %>
-  <% if @couple.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@couple.errors.count, "error") %> prohibited this couple from being saved:</h2>
+<div class="section">
+  <ul class="tabs">
+    <li class="current">I неделя</li>
+    <li>II неделя</li>
+  </ul>
+  <div class="box visible">
 
-      <ul>
-      <% @couple.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <h3>Понедельник</h3>
+    <%= form_for(@couple) do |f| %>
+        <% render 'shared/error_message', :target => @couple %>
+        <table class="table_day" id="table_1" data-table="1" data-count="1">
+          <thead>
+          <tr>
+            <th width="10%">Время</th>
+            <th width="7%">Тип занятия</th>
+            <th width="30%">Дисциплина</th>
+            <th width="12%">Аудитория</th>
+            <th width="20%">Преподаватель</th>
+            <th width="10%">Примечание</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @disc = discipline(current_user.group_id) %>
 
-  <div class="actions">
-    <%= f.submit %>
+          <tr id="item">
+            <td><%= f.select :cell_sked_id, CellSked.all.collect {|cs| [Russian::strftime(cs.start_time, "%H:%M"), cs.id]}, {:include_blank => 'Выберите'}, {:class => "table_day_field"} %></td>
+            <td><%= f.select(:couple_type, ["Зач.", "Конс.", "Лаб.", "Лек.", "Пр.", "Экз."], {:prompt => ''}, {:class => "table_day_field"}) %></td>
+            <td><%= f.select(:discipline_id, options_from_collection_for_select(@disc, "id", "disc_name"), {:prompt => ''}, {:class => "table_day_field"}) %></td>
+            <td><%= f.text_field :couple_cabinet, :class => "table_day_field" %></td>
+            <td><%= f.select(:couple_teacher, Teacher.all.collect {|t| [t.teach_surname + " " + t.teach_name[0].chr + "."+t.teach_secondname[0].chr+"."]}, {:prompt => ''}, {:class => "table_day_field"}) %></td>
+            <td><%= f.text_field :couple_comment, :class => "table_day_field" %></td>
+          </tr>
+          </tbody>
+        </table>
+        <p id="addRow1">+</p>
+
+        <script>
+
+
+        </script>
+
+
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
   </div>
-<% end %>
+</div>

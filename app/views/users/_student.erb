@@ -1,0 +1,77 @@
+<div id="butschedule" class="button_schedule">
+  <% @week = week_now %>
+  <ul>
+    <li class="buttons" id="day"><button id="butday" class="but_sched but_sched_active">на день</button></li>
+    <li class="buttons" id="twoweek"><button id=buttwoweek class="but_sched">на 2 недели</button></li>
+  </ul>
+</div>
+<%= text_field_tag :date, '', :disabled => true %>
+<table id="schedule" border="1">
+  <thead>
+  <tr>
+    <th width="10%">Время</th>
+    <th width="50%">Дисциплина</th>
+    <th width="10%">Аудитория</th>
+    <th width="20%">Преподаватель</th>
+    <th width="10%">Примечание</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if current_user.user_status == "student" %>
+      <% @coupl = Couple.find_by_sql("SELECT cell_skeds.start_time AS time, disciplines.disc_name AS disc, couples.couple_cabinet, couples.couple_teacher, couples.couple_week, couples.couple_dayweek, couples.couple_comment, couples.couple_type FROM couples INNER JOIN cell_skeds ON couples.cell_sked_id=cell_skeds.id INNER JOIN disciplines ON couples.discipline_id=disciplines.id WHERE (couples.group_id=" + current_user.group_id.to_s+") AND (couples.couple_week="+@week.to_s+") AND (couples.couple_dayweek="+Date.today.wday.to_s+")") %>
+      <% @coupl.each do |couple| %>
+          <tr>
+            <td align="center"><%= couple.time.to_s %></td>
+            <td><%= couple.couple_type+" "+couple.disc %></td>
+            <td align="center"><%= couple.couple_cabinet %></td>
+            <td><%= couple.couple_teacher %></td>
+            <td><%= couple.couple_comment %></td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<br/><br/>
+
+<table id="sched_two_week" border="1px" style="display: none">
+  <thead>
+  <tr>
+    <th></th>
+    <th class='tdday'>Пн</th>
+    <th class='tdday'>Вт</th>
+    <th class='tdday'>Ср</th>
+    <th class='tdday'>Чт</th>
+    <th class='tdday'>Пт</th>
+    <th class='tdday'>Cб</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td class="tdweek">I<br/>н<br/>е<br/>д<br/>е<br/>л<br/>я</td>
+    <% for i in 1..6 %>
+        <td class="tdday">
+          <% @coup = couple_twoweek(current_user.group_id.to_s, (1).to_s, (i).to_s) %>
+          <% @coup.each do |c| %>
+              <p><%= c.time.to_s + '   ' + c.type + ' ' + c.disc %></p>
+          <% end %>
+        </td>
+    <% end %>
+  </tr>
+  <tr>
+    <td class="tdweek">II<br/>н<br/>е<br/>д<br/>е<br/>л<br/>я</td>
+    <% for i in 1..6 %>
+        <td class="tdday">
+          <% @coup = couple_twoweek(current_user.group_id.to_s, (2).to_s, (i).to_s )%>
+          <% @coup.each do |c| %>
+              <p><%= c.time.to_s + ' ' + c.disc %></p>
+          <% end %>
+        </td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+
+<%= link_to "Редактировать расписание >>", '', :class => "edit_link"%>
+  <div>
+
+  </div>
