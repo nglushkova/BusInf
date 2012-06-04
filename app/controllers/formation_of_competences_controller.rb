@@ -1,3 +1,4 @@
+# encoding: utf-8
 class FormationOfCompetencesController < ApplicationController
   # GET /formation_of_competences
   # GET /formation_of_competences.json
@@ -44,7 +45,7 @@ class FormationOfCompetencesController < ApplicationController
 
     respond_to do |format|
       if @formation_of_competence.save
-        format.html { redirect_to @formation_of_competence, notice: 'Formation of competence was successfully created.' }
+        format.html { redirect_to @formation_of_competence, notice: 'Запись о формировании/требовании компетенции успешно добавлена' }
         format.json { render json: @formation_of_competence, status: :created, location: @formation_of_competence }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class FormationOfCompetencesController < ApplicationController
 
     respond_to do |format|
       if @formation_of_competence.update_attributes(params[:formation_of_competence])
-        format.html { redirect_to @formation_of_competence, notice: 'Formation of competence was successfully updated.' }
+        format.html { redirect_to @formation_of_competence, notice: 'Запись о формировании/требовании компетенции успешно обновлена' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

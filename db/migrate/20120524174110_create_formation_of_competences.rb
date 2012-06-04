@@ -8,6 +8,8 @@ class CreateFormationOfCompetences < ActiveRecord::Migration
       t.string :foc_ability
       t.string :foc_skills
 
+      t.
+
       t.timestamps
     end
   end

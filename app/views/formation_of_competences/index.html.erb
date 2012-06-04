@@ -1,21 +1,36 @@
-<h1>Listing formation_of_competences</h1>
+<h1>Список записей о формировании/требовании компетенций</h1>
 
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
+    <tr>
+    <th width="5%" >Код компетенции</th>
+    <th>Содержание компетенции</th>
+    <th width="5%">Формируется/Требуется</th>
+    <th>Дисциплиной</th>
+
+    </tr>
+
 
 <% @formation_of_competences.each do |formation_of_competence| %>
   <tr>
-    <td><%= link_to 'Show', formation_of_competence %></td>
-    <td><%= link_to 'Edit', edit_formation_of_competence_path(formation_of_competence) %></td>
-    <td><%= link_to 'Destroy', formation_of_competence, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= formation_of_competence.competence.comp_group %></td>
+    <td><%= formation_of_competence.competence.comp_name %></td>
+    <td>
+
+      <%= formation_of_competence.foc_type %>
+
+    </td>
+    <td><%= formation_of_competence.discipline.disc_name %></td>
+
+
+
+    <td><%= link_to 'Подробнее', formation_of_competence %></td>
+    <td><%= link_to 'Редактировать', edit_formation_of_competence_path(formation_of_competence) %></td>
+    <td><%= link_to 'Удалить', formation_of_competence, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Formation of competence', new_formation_of_competence_path %>
+<%= link_to 'Добавить запись', new_formation_of_competence_path %>

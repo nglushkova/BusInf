@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SpecialitiesController < ApplicationController
   # GET /specialities
   # GET /specialities.json
@@ -44,7 +45,7 @@ class SpecialitiesController < ApplicationController
 
     respond_to do |format|
       if @speciality.save
-        format.html { redirect_to '/specialities', notice: 'Speciality was successfully created.' }
+        format.html { redirect_to '/specialities', notice: 'Новое направление подготовки успешно добавлено' }
         format.json { render json: @speciality, status: :created, location: @speciality }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class SpecialitiesController < ApplicationController
 
     respond_to do |format|
       if @speciality.update_attributes(params[:speciality])
-        format.html { redirect_to @speciality, notice: 'Speciality was successfully updated.' }
+        format.html { redirect_to @speciality, notice: 'Направление подготовки успешно обновлено' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

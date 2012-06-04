@@ -63,7 +63,7 @@
           <td width="300px">
             <br>
             <br><br>
-            <%= f.select :specialty_id, Speciality.all.collect {|s| [s.spec_name, s.id]}, {:include_blank => 'Выберите специальность'}, {:class => "field"} %>
+            <%= f.select :speciality_id, Speciality.all.collect {|s| [s.spec_name, s.id]}, {:include_blank => 'Выберите специальность'}, {:class => "field"} %>
             <br> __________________________________
             <br>  <%= f.label "(наименование)" %>
             <br>  <input type=text>
@@ -405,7 +405,7 @@
     <table border="0" cellspacing="0" cellpadding="0" width="100%">
       <tr>
         <td width="24%"><p>Цель дисциплины:</p></td>
-        <td width="75%"><p><em><textarea name=address rows=5 cols=112> </textarea></em></p></td>
+        <td width="75%"><p><%= f.text_area :disc_objective, :class => "field" %></p></td>
       </tr>
       <tr>
         <td width="24%"><p>Задачи дисциплины:</p></td>
@@ -422,23 +422,20 @@
         <td width="27%"><p>Дисциплина входит в учебный цикл</p></td>
         <td width="72%"><p>
 
-          <select name="spisok">
-            <optgroup label="Учебный цикл" selected>
-              <option value="pt1" >Б1 - Гуманитарный, социальный и экономический цикл</option>
-              <option value="pt2">Б2 - Математический и естественнонаучный цикл</option>
-              <option value="pt3">Б3 - Профессиональный цикл</option>
-              <option value="pt4">ФТД -Факультативы</option>
-              <option value="pt5">Б4 - Физическая культура</option>
-            </optgroup>
-          </select>
 
 
+          <%= f.select :disc_cycle, ['Гуманитарный, социальный и экономический цикл' , 'Математический и естественнонаучный цикл', 'Профессиональный цикл','Факультативы','Физическая культура'], {:include_blank => 'Выберите цикл дисциплин'}, {:class => "field"} %>
+
+          
+
+
+          <%  %>
         </p>
         </td>
       </tr>
       <tr>
         <td width="27%"><p>Дисциплина входит в модуль ООП</p></td>
-        <td width="72%"><p><input type=text size=112 date=the_date></p></td>
+        <td width="72%"><p><%= f.select :disc_cycle, ['Федеральный компонент' , 'Региональный (вузовский) компонент'], {:include_blank => 'Выберите подцикл дисциплин'}, {:class => "field"} %></p></td>
       </tr>
       <tr>
         <td width="27%"><p>Обеспечивающие (предшествующие)    дисциплины</p></td>
