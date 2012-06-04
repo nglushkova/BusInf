@@ -1,9 +1,10 @@
-<h1>Сведения о дисциплине <%= @discipline.disc_name %></h1>
-<p id="notice"><%= notice %></p>
+<h1>Сведения о дисциплине "<%= @discipline.disc_name %>"</h1>
+<p  id="notice"><%= notice %></p>
 
 
 
-<p>Специальность: <%= @spec=Speciality.find(@discipline.specialty_id).spec_name %>  </p><br/>
+<p>Специальность: <%= @spec=Speciality.find(@discipline.speciality_id).spec_name %>  </p><br/>
+
 
 <p>Курс: <%= @discipline.disc_course %></p><br/>
 
@@ -13,6 +14,52 @@
 
 <p>Цель курса: <%= @discipline.disc_objective %></p><br/>
 <p>Задачи курса: <%= @discipline.disc_tasks %></p><br/>
+
+
+<div align="left">
+  Компетенции, необходимые для изучения дисциплины:
+
+
+<table>
+  <% foc=@discipline.formation_of_competences.all(:conditions => foc_type='true')
+
+     foc.each do |formation_of_competence| %>
+      <% if (formation_of_competence.foc_type?)%>
+          <tr>
+            <td width="10%"><%=formation_of_competence.competence.comp_group %> |</td>
+            <td width="60%"><%=formation_of_competence.competence.comp_name %></td>
+            <td><%= link_to 'Подробнее...',formation_of_competence.competence %></td>
+          </tr>
+          <% end %>
+
+  <%end %>
+</table>
+<br/>
+</div>
+
+
+<div align="left">
+  Компетенции, формируемые в процессе изучения дисциплины:
+
+
+<table>
+  <% foc=@discipline.formation_of_competences.all()
+
+     foc.each do |formation_of_competence| %>
+      <% if (formation_of_competence.foc_type?)%>
+          <% else %>
+          <tr>
+            <td width="10%"><%= formation_of_competence.competence.comp_group %> |</td>
+            <td width="60%"><%= formation_of_competence.competence.comp_name %></td>
+            <td><%= link_to 'Подробнее...',formation_of_competence.competence %></td>
+      </tr>
+      <% end %>
+  <%end %>
+</table>
+<br/>
+</div>
+
+
 
 
 
