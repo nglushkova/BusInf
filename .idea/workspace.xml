@@ -29,16 +29,61 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/competences/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="79" selection-start="300" selection-end="300" vertical-scroll-proportion="-0.65384614">
+            <state line="11" column="79" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/specialities/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="20" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.5641026">
+            <state line="46" column="0" selection-start="1422" selection-end="1422" vertical-scroll-proportion="-12.192307">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20120601194354_add_to_speciality.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20120601194354_add_to_speciality.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="4" selection-start="198" selection-end="245" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20120604155816_add_to_speciality_shifr.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20120604155816_add_to_speciality_shifr.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="44" selection-start="175" selection-end="175" vertical-scroll-proportion="0.27567568">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20120524174524_create_materials.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20120524174524_create_materials.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="27" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/disciplines/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="62" selection-start="1188" selection-end="1188" vertical-scroll-proportion="-11.423077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20120524175025_create_specialities.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20120524175025_create_specialities.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="33" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -66,7 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/formation_of_competences/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/formation_of_competences/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/formation_of_competences/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/formation_of_competences_controller.rb" />
@@ -82,6 +126,7 @@
         <option value="$PROJECT_DIR$/app/views/disciplines/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/disciplines/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/specialities/show.html.erb" />
+        <option value="$PROJECT_DIR$/db/migrate/20120604155816_add_to_speciality_shifr.rb" />
       </list>
     </option>
   </component>
@@ -124,26 +169,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BusInf" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -356,18 +381,38 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BusInf" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="org.jetbrains.plugins.ruby.settings.RubyIdeSdkConfigurable" />
+    <property name="recentsLimit" value="5" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Rake.db:migrate">
     <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
@@ -459,15 +504,6 @@
         <option name="RakeTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method>
-        <option name="RakeTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -495,6 +531,15 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method>
+        <option name="RakeTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method>
         <option name="RakeTask" enabled="false" />
       </method>
@@ -651,7 +696,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26858878" sideWeight="0.6803279" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27314112" sideWeight="0.6803279" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3229508" sideWeight="0.3323217" order="7" side_tool="true" content_ui="tabs" />
@@ -720,26 +765,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/disciplines/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/competences/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/disciplines/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/disciplines.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="11" selection-start="235" selection-end="235" vertical-scroll-proportion="0.36756757" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/formation_of_competence.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="2" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0" />
@@ -767,49 +792,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20120604130523_rename.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="67" selection-start="115" selection-end="115" vertical-scroll-proportion="0.13076924">
-          <folding />
-        </state>
+        <state line="3" column="67" selection-start="115" selection-end="115" vertical-scroll-proportion="0.13076924" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20120524193343_rename_in_user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="68" selection-start="63" selection-end="125" vertical-scroll-proportion="0.08717949">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/disciplines/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="53" selection-start="414" selection-end="414" vertical-scroll-proportion="4.576923">
-          <folding />
-        </state>
+        <state line="2" column="68" selection-start="63" selection-end="125" vertical-scroll-proportion="0.08717949" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/disciplines/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="13" selection-start="1183" selection-end="1663" vertical-scroll-proportion="0.8406593">
-          <folding />
-        </state>
+        <state line="56" column="13" selection-start="1183" selection-end="1663" vertical-scroll-proportion="0.8406593" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/competences/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="79" selection-start="300" selection-end="300" vertical-scroll-proportion="-0.65384614">
+        <state line="11" column="79" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20120524173628_create_disciplines.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/specialities/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="20" selection-start="1956" selection-end="1956" vertical-scroll-proportion="0.5641026">
+        <state line="46" column="0" selection-start="1422" selection-end="1422" vertical-scroll-proportion="-12.192307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/disciplines/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="62" selection-start="1188" selection-end="1188" vertical-scroll-proportion="-11.423077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120524175025_create_specialities.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="33" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120524174524_create_materials.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="27" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120601194354_add_to_speciality.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="4" selection-start="198" selection-end="245" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120604155816_add_to_speciality_shifr.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="44" selection-start="175" selection-end="175" vertical-scroll-proportion="0.27567568">
           <folding />
         </state>
       </provider>

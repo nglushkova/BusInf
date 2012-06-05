@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604130523) do
+ActiveRecord::Schema.define(:version => 20120604155816) do
 
   create_table "advertisements", :force => true do |t|
     t.date     "ad_date"
