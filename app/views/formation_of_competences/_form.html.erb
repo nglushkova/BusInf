@@ -11,7 +11,51 @@
     </div>
   <% end %>
 
+    <table>
+      <tbody>
+      <tr>
+        <td width="300px"><%= f.label "Компетенция" %></td>
+        <td><%= f.select :competence_id, Competence.all.collect {|c| [c.comp_name, c.id]}, {:include_blank => 'Выберите компетенцию'}, {:class => "field"} %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "формируется [v] / требуется [ ]" %></td>
+        <td><%= f.check_box :foc_type %> </td>
+      </tr>
+      <tr>
+        <td><%= f.label "дисциплиной" %></td>
+        <td><%= f.select :discipline_id, Discipline.all.collect {|d| [d.disc_name, d.id]}, {:include_blank => ''}, {:class => "field"} %> </td>
+      </tr>
+
+      <tr>
+        <td><br/></td>
+      </tr>
+
+      <tr>
+        <td>Содержание компетенции: </td>
+      </tr>
+      <tr>
+        <td><%= f.label "Знания" %></td>
+        <td><%= f.text_area :foc_knowledge, :class => "field" %>  </td>
+      </tr>
+      <tr>
+        <td><%= f.label "Умения" %></td>
+        <td><%= f.text_area :foc_ability, :class => "field" %>  </td>
+      </tr>
+      <tr>
+        <td><%= f.label "Навыки" %></td>
+        <td><%= f.text_area :foc_skills, :class => "field" %>  </td>
+      </tr>
+
+      </tbody>
+    </table>
+
+
+
+
+
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Сохранить изменения"%>
   </div>
 <% end %>

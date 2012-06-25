@@ -78,6 +78,11 @@ div.basement{
     float: left;
     padding: 10px 0 0 10px;
 }
+
+.hide{
+    display:none;
+}
+
 /*╤Б╤В╨╕╨╗╨╕ ╨╝╨╡╨╜╤О*/
 
 #menu{
@@ -494,6 +499,7 @@ ul.tabs {
     color: #27568C;
     text-shadow: #cccccc 3px 3px 3px;
 }
+<<<<<<< HEAD
 .popup_close{
     float:right;
     width:15px;
@@ -597,3 +603,12 @@ ul.tabs {
 .write_message{
     margin-left: 800px;
 }
+=======
+#add_event_bottom_content{
+    position: relative;
+    height: 270px;
+    background-color: #C9F1FF;
+    margin-right: 13px;
+}
+
+>>>>>>> 645f6c4eae1a466eae10990e391fb4fc84ef081e

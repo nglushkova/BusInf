@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120619170257) do
+=======
+ActiveRecord::Schema.define(:version => 20120604155816) do
+>>>>>>> 645f6c4eae1a466eae10990e391fb4fc84ef081e
 
   create_table "advertisements", :force => true do |t|
     t.date     "ad_date"
@@ -23,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120619170257) do
     t.datetime "updated_at",   :null => false
   end
 
+<<<<<<< HEAD
   create_table "book_of_classes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "discipline_id"
@@ -255,3 +260,5 @@ ActiveRecord::Schema.define(:version => 20120619170257) do
   add_index "users", ["user_email"], :name => "index_users_on_user_email", :unique => true
 
 end
+=======
+>>>>>>> 645f6c4eae1a466eae10990e391fb4fc84ef081e

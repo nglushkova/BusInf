@@ -2,8 +2,40 @@
 
 
 <p>Код компетенции: <%= @competence.comp_group %></p><br/>
-<p>Название компетенции: <%= @competence.comp_name %></p><br/>
+<p>Содержание компетенции: <%= @competence.comp_name %></p><br/>
 
+<div>
+  Дисциплины, формирующие компетенцию:
+</div>
+
+<table>
+  <% foc=@competence.formation_of_competences.all(:conditions => foc_type='true')
+  foc.each do |formation_of_competence| %>
+  <tr>
+    <td><%= formation_of_competence.discipline.disc_name %></td>
+    <td><%= link_to 'Подробнее...',formation_of_competence.discipline %></td>
+    <td><%= formation_of_competence.foc_type? %></td>
+  </tr>
+  <%end %>
+</table>
+
+<br/>
+
+<div>
+  Дисциплины, для освоения которых необходимо владение компетенцией:
+</div>
+<table>
+  <% foc=@competence.formation_of_competences.all(:conditions => foc_type='false')
+     foc.each do |formation_of_competence| %>
+      <tr>
+        <td><%= formation_of_competence.discipline.disc_name %></td>
+        <td><%= link_to 'Подробнее...',formation_of_competence.discipline %></td>
+      </tr>
+  <%end %>
+</table>
+
+
+ <br/>
 
 
 <%= link_to 'Редактировать', edit_competence_path(@competence) %> |
