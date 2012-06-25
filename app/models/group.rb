@@ -1,12 +1,12 @@
 # encoding: utf-8
 class Group < ActiveRecord::Base
+  has_and_belongs_to_many :events
+  has_and_belongs_to_many :advertisements
   has_many :students
-  belongs_to :speciality
-  belongs_to :course
   has_many :couples
-  has_many :events
-  has_many :advertisements
-  has_many :users
+  belongs_to :speciality
+  has_many :messages
+
   attr_accessible :speciality_id, :gr_course, :gr_cipher, :gr_quantity
 
   validates :speciality_id, :presence => true

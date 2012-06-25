@@ -1,0 +1,75 @@
+<div style="min-height: 700px;">
+<p id="notice"><%= notice %></p>
+  <div class="panelleft">
+    <div id="datepicker"></div><br/>
+    <div class="coming_events">
+      <table>
+        <thead>
+        <tr>
+          <td>Ближайшие события</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>21.06.2012 Защита диплома</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="calls">
+      <h4>Расписание звонков:</h4><br/>
+      <% @calls = list_calls  %>
+      <% @calls.each do |call| %>
+          <p><%= call.start_time.to_s(:time) + ' - ' + call.end_time.to_s(:time) %></p>
+      <% end %>
+    </div>
+  </div>
+  <% @couples = list_couples %>
+  <div class="panelright">
+    <h1 style="padding-left: 20px; margin-bottom: 20px;">Сообщения</h1>
+    <div class="section">
+	<ul class="tabs">
+		<li class="current">Полученные</li>
+		<li>Отправленные</li>
+      <li class="write_message"><a href="">Написать сообщение</a></li>
+	</ul>
+	<div class="box visible">
+	<table>
+	<tr class="mes_tr">
+	<td class="mes_author"><p>Кузьминых Михаил Михайлович</p>
+	<p style="font-size: 70%">14.05.2012 12:27</p></td>
+	<td width="60%" class="message">Как продвигается работа над дипломным проектом?</td>
+	<td class="mes_option"><a href="">Ответить</a></td>
+	<td class="mes_option"><a href="">Удалить</a></td>
+	</tr>
+	</table>
+	</div>
+
+<div class="box">
+<table>
+	<tr class="mes_tr">
+	<td class="mes_author"><p>Кузьминых Михаил Михайлович</p>
+	<p style="font-size: 70%">14.06.2012 22:27</p></td>
+	<td width="65%" class="message">там приведена форма для отметки посещаемости студентов</td>
+	<td class="mes_option"><a href="">Удалить</a></td>
+	</tr>
+	</table>
+	</div>
+  </div>
+
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+</table>
+
+<br />
+</div>
+

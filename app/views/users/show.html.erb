@@ -1,49 +1,74 @@
-<p id="notice"><%= notice %></p>
-<% @week = week_now %>
-<div class="panelleft">
-  <div id="datepicker"></div><br/>
+<div style="min-height: 700px">
+  <p id="notice"><%= notice %></p>
+  <% date = Date.today %>
+  <% @week = week_now(date) %>
+  <div class="panelleft">
+    <div id="datepicker"></div><br/>
+    <div class="coming_events">
+      <table>
+        <thead>
+        <tr>
+          <td>Ближайшие события</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>21.06.2012 Защита диплома</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div class="calls">
-    <h4>Расписание звонков:</h4><br/>
-    <% @calls = list_calls  %>
-    <% @calls.each do |call| %>
-        <p><%= call.start_time.to_s(:time) + ' - ' + call.end_time.to_s(:time) %></p>
-    <% end %>
-  </div>
-</div>
-<% @couples = list_couples %>
-<div class="panelright">
-
-  <div class="date_today" style="text-decoration: underline">Сегодня: <%= Russian::strftime(Date.today, "%A %d %B %Y")  %>
-    <% if @week == 1 %>
-        <%= " " + "I неделя" %>
-    <% else %>
-        <%= " " + "II неделя" %>
-    <% end %>
-  </div>
-  <br/>
-  <% if current_user.user_status == "student" %>
-      <%= render 'student' %>
-  <% end %>
-  <div class="event">
-    <p style="text-decoration: underline">События сегодня:</p>
-    <% @event = event_list %>
-    <table border="0" class="tab_event">
-      <tbody>
-      <% @event.each do |ev| %>
-          <tr>
-            <td width="12%"><%= ev.start_time %></td>
-            <td width="83%"><%= ev.ev_text %></td>
-            <td width="5%" style="font-size: 60%">Редактировать</td>
-          </tr>
+    <div class="calls">
+      <h4>Расписание звонков:</h4><br/>
+      <% @calls = list_calls  %>
+      <% @calls.each do |call| %>
+          <p><%= call.start_time.to_s(:time) + ' - ' + call.end_time.to_s(:time) %></p>
       <% end %>
-      </tbody>
-    </table>
-    <%= link_to "Добавить событие >>", '', :class => "edit_link" %>
-    <div id="add_event">
     </div>
   </div>
-  <div class="event">
-    <p style="text-decoration: underline">Объявления:</p>
+  <% @couples = list_couples %>
+  <div class="panelright">
+    <div class="date_today" style="text-decoration: underline">Сегодня: <%= Russian::strftime(Date.today, "%A %d %B %Y")  %>
+      <% if @week == 1 %>
+          <%= " " + "I неделя" %>
+      <% else %>
+          <%= " " + "II неделя" %>
+      <% end %>
+    </div>
+    <br/>
+    <% if current_user.user_status == "student" %>
+        <%= render 'student' %>
+    <% end %>
+    <div class="event">
+      <p style="text-decoration: underline">События сегодня:</p>
+      <% @ev = event_list %>
+      <table border="0" class="tab_event">
+        <tbody>
+        <% @ev.each do |ev| %>
+            <tr>
+              <td width="12%"><%= ev.start_time %></td>
+              <td width="83%"><%= ev.ev_text %></td>
+              <td width="5%" style="font-size: 60%">Редактировать</td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="popup_anch"><a href="#">Добавить событие >></a></div>
+      <div class="popup_body"></div>
+      <div class="popup">
+        <a href="#" class="popup_close" title="Закрыть"><%= image_tag('close.jpg') %></a>
+        <h3>Добавление события</h3><br/>
+        <div>
+          <% @event = Event.new %>
+          <%= render 'events/form', :us => current_user.id %>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <p style="text-decoration: underline">Объявления:</p>
+      <div class="popup_anch" style="margin: 0 0 0 67%;"><a href="#">Добавить объявление >></a></div>
+    </div>
   </div>
 </div>

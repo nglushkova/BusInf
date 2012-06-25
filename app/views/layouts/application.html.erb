@@ -12,6 +12,11 @@
   <%= stylesheet_link_tag    'application', :media => 'screen' %>
   <%= stylesheet_link_tag 'jquery-calendar', :media => 'screen' %>
   <!--[if lt IE 8]><%= stylesheet_link_tag 'ie' %><![endif]-->
+  <script type="text/javascript">
+      $(function() {
+          $(".popup_anch a").simplePopup();
+      });
+  </script>
 
   <meta name="keywords" content="ВятГУ, высшее образование в Кирове, вузы Кирова, кафедра бизнес-информатики, абитуриенты, студеты Кирова, политех, прикладная информатика, бизнес-информатика" inline=""/>
 </head>
@@ -51,30 +56,19 @@
         <li><b><%= link_to "О кафедре", root_path %></b>
           <ul class="sub">
   <% end %>
-
   <% if controller.action_name == 'home' %>
       <li class="current_sub"><b><%= link_to "История кафедры", root_path %></b></li>
   <% else %>
       <li><%= link_to "История кафедры", root_path %></li>
   <% end %>
-
   <% if controller.action_name == 'teacherpage' %>
       <li class="current_sub"><b><%= link_to "Преподавательский состав", faculty_path %></b></li>
   <% else %>
       <li><%= link_to "Преподавательский состав", faculty_path %></li>
   <% end %>
-
-  <li><li><%= link_to "Направления подготовки", specialities_path %></li></li>
-
-
-
-
   </ul>
   </li>
   </ul>
-
-
-
 
   <% if controller.controller_name == 'specialities' || controller.controller_name == 'disciplines' %>
       <ul class="current">
@@ -85,28 +79,24 @@
         <li><b><%= link_to "Образовательная деятельность", specialities_path %></b>
           <ul class="sub">
   <% end %>
-
   <% if controller.action_name == 'specialities' || controller.controller_name == 'disciplines' %>
       <li class="current_sub"><b><%= link_to "Направления подготовки", specialities_path %></b></li>
   <% else %>
       <li><%= link_to "Направления подготовки", specialities_path %></li>
   <% end %>
-
   <% if controller.action_name == 'bi' %>
       <li class="current_sub"><b><%= link_to "Бизнес-информатика", @bi %></b></li>
   <% else %>
       <li><%= link_to "Бизнес-информатика", @bi %></li>
   <% end %>
-
   <% if controller.action_name == 'pi' %>
       <li class="current_sub"><b><%= link_to "Прикладная информатика", @pi %></b></li>
   <% else %>
       <li><%= link_to "Прикладная информатика", @pi %></li>
   <% end %>
-
-
-
-
+  </ul>
+  </li>
+  </ul>
 
   <!--<ul class="select">-->
   <!--<li><a href=""><b>Образовательная деятельность</b></a>-->
@@ -114,9 +104,6 @@
   <!--<li><a href="">Направления подготовки</a></li>-->
   <!--<li><a href="">Прикладная информатика</a></li>-->
   <!--<li><a href="">Бизнес-информатика</a></li>-->
-  </ul>
-  </li>
-  </ul>
 
   <ul class="select">
     <li><a href=""><b>Научная деятельность</b></a>
@@ -127,13 +114,20 @@
     </li>
   </ul>
 
+  <ul class="select">
+    <li><a href=""><b>Абитуриенту</b></a></li>
+    <ul class="sub">
+      <li><a href=""></a></li>
+    </ul>
+  </ul>
+
   <% if signed_in? %>
       <% @page = pages_path(current_user.id, controller.controller_name, controller.action_name) %>
   <% else %>
       <% @page = signin_path %>
   <% end %>
 
-  <% if controller.controller_name == 'sessions' || controller.controller_name == 'users' %>
+  <% if controller.controller_name == 'sessions' || controller.controller_name == 'users' || controller.controller_name == 'messages' %>
       <ul class="current">
         <li><b><%= link_to "Личный кабинет", @page %></b>
           <ul class="sub_active">
@@ -149,11 +143,16 @@
             <li><%= link_to "Расписание", @page %></li>
         <% end %>
         <li><%= link_to "Личные данные", edit_user_path(current_user.id) %></li>
+      <% if controller.controller_name == 'messages' && controller.action_name == 'index' %>
+          <li class="current_sub"><b><%= link_to "Сообщения", messages_path %></b></li>
+          <% else %>
+          <li><%= link_to "Сообщения", messages_path %></li>
+      <% end %>
         <% if current_user.user_status == 'teacher' %>
             <li><%= link_to "Список студентов", '' %></li>
             <li><%= link_to "Публикации", '' %></li>
         <% end %>
-    <% else %>
+  <% else %>
         <% if controller.controller_name == 'sessions' && controller.action_name == 'new' %>
             <li class="current_sub"><%= link_to "Вход", signin_path %></li>
         <% else %>
@@ -182,16 +181,18 @@
     <p class="exitlk"><%= link_to "Выход", signout_path, :method => :delete %></p>
     </div>
 <% end %>
-<div class="main">
+<div id="main">
 
   <%= yield %>
+  <section>
+    <%= debug(params) if Rails.env.development? %>
+  </section>
+
 </div>
-<section>
-  <%= debug(params) if Rails.env.development? %>
-</section>
+
 <div class="basement">
   <a href="#" id="clickup"><%= image_tag('up.png', :alt => "Вверх", :id => "up", :title => "Наверх" ) %></a>
-  © ВятГУ, Кафедра бизнес-информатики, 2012
+  <p style="text-align: center">© ВятГУ, Кафедра бизнес-информатики, 2012</p>
 </div>
 </body>
 </html>

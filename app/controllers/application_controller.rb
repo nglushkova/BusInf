@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     @capt = @student.stud_captain
   end
 
-  def week_now
-    if Date.today < ("01/09/"+Date.today.year.to_s).to_date
+  def week_now(date)
+    if date < ("01/09/"+Date.today.year.to_s).to_date
       sept=(("01/09/"+(Date.today.year-1).to_s).to_date)
       num_sept =sept.cweek%2
     else
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       num_sept = sept.cweek%2
     end
 
-    if DateTime.parse(Time.now.to_s) < DateTime.parse("01/09/"+Date.today.year.to_s)
+    if date < ("01/09/"+Date.today.year.to_s).to_date
       dec = (("31/12/"+(Date.today.year-1).to_s).to_date).cweek
       jan = (("01/01/"+Date.today.year.to_s).to_date).cweek
       if num_sept == dec%2
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         num_dec = 2
       end
       if dec == jan && dec%2 == 0
-          if Date.today.cweek%2 == num_sept
+          if date.cweek%2 == num_sept
               week = 1
           else
               week =2
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
               end
             end
       else
-        if Date.today.cweek%2 == num_sept
+        if date.cweek%2 == num_sept
           week = 1
         else
           week = 2
