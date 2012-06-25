@@ -1,5 +1,20 @@
-<h1>Новый студент</h1>
+<h1>Список студентов группы</h1><br/>
 
-<%= render 'form' %>
+<table>
+  <thead>
+  <tr>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Отчество</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= n = 15-1 %>
+  <%= form_for :student, :url => students_path do |f| %>
+      <%= render :partial => 'form', :locals => {:f => f} %>
+   </tbody>
+   </table>
+      <p><%= submit_tag "Сохранить", :class => "actions"%></p>
+  <% end %>
 
 <%= link_to 'Назад', students_path %>

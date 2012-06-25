@@ -1,0 +1,48 @@
+<%= form_for(@book_of_visit) do |f| %>
+  <% if @book_of_visit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book_of_visit.errors.count, "error") %> prohibited this book_of_visit from being saved:</h2>
+
+      <ul>
+      <% @book_of_visit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table align="left" border="1">
+  <thead>
+  <tr>
+    <th>ФИО студента</th>
+    <th width="70px">25.05</th>
+    <th width="70px">27.05</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Бабкин Алексндр</td>
+    <td align="center"><input type="checkbox" disabled="disabled"></td>
+    <td align="center"><input type="checkbox"></td>
+  </tr>
+  <tr>
+    <td>Глушкова Наталья</td>
+    <td align="center"><input type="checkbox" checked="true" disabled="disabled"></td>
+    <td align="center"><input type="checkbox"></td>
+  </tr>
+  <tr>
+    <td>Кольцова Наталья</td>
+    <td align="center"><input type="checkbox" checked="true" disabled="disabled"></td>
+    <td align="center"><input type="checkbox"></td>
+  </tr>
+  <tr>
+    <td>Карпова Елена</td>
+    <td align="center"><input type="checkbox" checked="true" disabled="disabled"></td>
+    <td align="center"><input type="checkbox"></td>
+  </tr>
+  </tbody>
+</table>
+<p>
+  <%= f.submit :value => "Сохранить", :style => "margin: 30px" %>
+</p>
+<% end %>
+<br/>

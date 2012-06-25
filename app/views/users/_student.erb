@@ -1,8 +1,9 @@
 <div id="butschedule" class="button_schedule">
-  <% @week = week_now %>
+  <% date= Date.today %>
+  <div id="week"><% @week = week_now(date) %></div>
   <ul>
-    <li class="buttons" id="day"><button id="butday" class="but_sched but_sched_active">на день</button></li>
-    <li class="buttons" id="twoweek"><button id=buttwoweek class="but_sched">на 2 недели</button></li>
+    <li class="buttons"><button id="butday" style="border: 5px solid #003355;" class="but_sched">на день</button></li>
+    <li class="buttons"><button id=buttwoweek style="border: 5px solid #207DB0;" class="but_sched">на 2 недели</button></li>
   </ul>
 </div>
 <%= text_field_tag :date, '', :disabled => true %>
@@ -71,7 +72,7 @@
   </tbody>
 </table>
 
-<%= link_to "Редактировать расписание >>", '', :class => "edit_link"%>
+<!---<%= link_to "Редактировать расписание >>", '', :class => "edit_link"%>-->
   <div>
 
   </div>

@@ -1,6 +1,12 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
+  belongs_to :student
   belongs_to :group
+  has_and_belongs_to_many :advertisements
+  has_many :book_of_classes
+  has_many :commentaries
+  has_and_belongs_to_many :events
+  has_many :messages
 
   attr_accessor :user_password
   attr_accessible :user_name, :user_surname, :user_secondname, :user_password, :user_email, :user_password_confirmation, :user_status, :group_id, :user_birthday, :user_icq, :user_phone, :user_avatar

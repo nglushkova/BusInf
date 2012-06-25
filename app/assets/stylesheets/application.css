@@ -48,18 +48,18 @@ div.contact{
     border: solid #ffffff;
     border-width: 0 0 0 1px;
 }
-.main{
+#main{
     width: 90%;
     margin: 0 auto;
     padding-top: 5px;
     padding-bottom: 10%;
     padding-right: 0px;
     padding-left: 0px;
-    min-height: 600px;
+    min-height: 450px;
     font-size: 110%;
     color: #606060;
 }
-.main h1{
+#main h1{
     font-style: italic;
     font-size: 150%;
     color: #27568C;
@@ -268,7 +268,7 @@ ul#menu{
 }
 .panelleft{
     width: 30%;
-    height: 800px;
+    height: 100%;
     margin-left: 0;
     float: left;
 }
@@ -280,7 +280,7 @@ ul#menu{
 }
 .panelright{
     width: 69.5%;
-    height: 800px;
+    height: 100%;
     margin-left: 0;
     float: right;
 }
@@ -360,13 +360,9 @@ background-color: #8dbdd8;
 .but_sched{
     font: 90% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
     background-color: #fff;
-    border: 5px solid #207DB0;
     border-radius: 5px;
     width: 110px;
     color: #606060;
-}
-.but_sched_active{
-    border: 5px solid #003355;
 }
 .tdweek{
     width: 4%;
@@ -464,29 +460,140 @@ ul.tabs {
     width: 98%;
     margin: 0;
 }
-#add_event{
-    position: absolute;
-    left: 200px;
-    top:100px;
-    width: 400px;
-    height: 300px;
-    overflow: hidden;
-    display: none;
+
+.popup_anch{
+    margin: 0 0 0 71.5%;
 }
-#add_event_close{
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
+.popup_anch a{
+    text-decoration: none;
 }
-#add_event_bottom{
-    position: relative;
-    height: 270px;
-    background-color: #C9F1FF;
+.popup_anch a:hover {
+    margin: 0 1% 0 1.5%;}
+.popup_anch_bottom { margin:1500px 0 50px 0; }
+.popup{
+    display:none;
+    position:fixed;
+    top:60px;
+    left:50%;
+    background: #F0F0F6;
+    width:500px;
+    height:350px;
+    box-shadow:4px 4px 30px #130507;
+    z-index:2000;
+    border-radius: 10px;
 }
-#add_event_bottom_content{
-    position: relative;
-    height: 270px;
-    background-color: #C9F1FF;
-    margin-right: 13px;
+.popup div{
+    width:100%;
+    padding: 10px 0 0 20px;
+    font-size: 18px;
+}
+.popup h3{
+    padding: 20px 0 0 30px;
+    font-style: italic;
+    font-size: 130%;
+    color: #27568C;
+    text-shadow: #cccccc 3px 3px 3px;
+}
+.popup_close{
+    float:right;
+    width:15px;
+    height:14px;
+    margin: 10px 20px 0 0;
+}
+.popup_body{
+    display:none;
+    background:#000;
+    left:0;
+    top:0;
+    position:fixed;
+    width:100%;
+    height:100%;
+    opacity:0.5;
+    z-index: 1999;
+}
+.button_ok{
+    width: 30px;
+    height: 30px;
+    background-color: #F0F0F6;
+    background-image: url('ok.jpg');
+    background-repeat: no-repeat;
+    border: 0;
+    float: right;
+    margin: 20px 125px 0 0;
+}
+.flash error{ color: #ff0000;}
+.coming_events table{
+    width: 100%;
+    text-align: left;
+    margin: 0 0 20px 0;
+    border-radius: 7px;
+    border: 1px solid #2191c0;
+}
+.coming_events thead{
+    background-color: #2191c0;
+    color: #C9F1FF;
+    padding: 5px;
+}
+.coming_events tbody{
+    font-size: 80%;
+    color: #27568C;
+    padding-left: 5px;
+}
+ul.tabs {
+	height: 28px;
+	line-height: 25px;
+	list-style: none;
+	border-bottom: 1px solid #DDD;
+	background: #FFF;
+}
+.tabs li {
+	float: left;
+	display: inline;
+	margin: 0 1px -1px 0;
+	padding: 0 13px 1px;
+	color: #777;
+	cursor: pointer;
+	background: #F9F9F9;
+	border: 1px solid #E4E4E4;
+	border-bottom: 1px solid #F9F9F9;
+	position: relative;
+}
+.tabs li:hover, .tabs li:hover {
+	color: #F70;
+	padding: 0 13px;
+	background: #FFFFDF;
+	border: 1px solid #FFCA95;
+}
+.tabs li.current {
+	color: #444;
+	background: #EFEFEF;
+	padding: 0 13px 2px;
+	border: 1px solid #D4D4D4;
+	border-bottom: 1px solid #EFEFEF;
+}
+.box {
+	display: none;
+	border: 1px solid #D4D4D4;
+    border-width: 0 1px 1px;
+	background: #EFEFEF;
+	padding: 0 12px;
+}
+.box.visible {
+	display: block;
+}
+.mes_author{
+    padding: 10px 0 10px 5px;
+    font-size: 90%;
+    width: 30%;
+}
+.message{
+    padding: 10px 0 10px 10px;
+    font-size: 90%;
+}
+.mes_option{
+    width: 5%;
+    font-size: 80%;
+}
+.write_message{
+    margin-left: 800px;
 }

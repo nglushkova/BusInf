@@ -1,4 +1,16 @@
 BusInf::Application.routes.draw do
+  resources :reschedulings
+
+  resources :messages
+
+  resources :book_of_visits
+
+  resources :book_of_classes
+
+  resources :commentaries
+
+  resources :comments
+
   get "sessions/new"
 
   get "users/new"
@@ -8,6 +20,7 @@ BusInf::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/contact', :to => "pages#contact"
   match '/faculty', :to => "pages#teacherpage"
+  match '/messages', :to => "messages#index"
 
   root :to => 'pages#home'
 

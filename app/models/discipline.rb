@@ -6,6 +6,8 @@ class Discipline < ActiveRecord::Base
   has_many :themes
   has_many :couples
   belongs_to :speciality
+  has_many :book_of_visits
+  has_many :book_of_classes
 end
 
 

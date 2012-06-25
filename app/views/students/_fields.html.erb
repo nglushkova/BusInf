@@ -1,0 +1,8 @@
+<% fields_for_student(student) do |student_form| %>
+<tr>
+  <td><%= student_form.text_field :stud_surname, :index => i, :class => "field" %></td>
+  <td><%= student_form.text_field :stud_name, :index => i, :class => "field" %></td>
+  <td><%= student_form.text_field :stud_secondname, :index =>i, :class => "field" %></td>
+  <% :student.group_id = current_user.group_id %>
+</tr>
+<% end %>

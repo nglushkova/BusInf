@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601194354) do
+ActiveRecord::Schema.define(:version => 20120619170257) do
 
   create_table "advertisements", :force => true do |t|
     t.date     "ad_date"
@@ -23,12 +23,46 @@ ActiveRecord::Schema.define(:version => 20120601194354) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "book_of_classes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "discipline_id"
+    t.integer  "group_id"
+    t.date     "boc_date"
+    t.string   "boc_type"
+    t.integer  "boc_quantityhours"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "book_of_visits", :force => true do |t|
+    t.integer  "student_id"
+    t.boolean  "bov_presence"
+    t.date     "bov_date"
+    t.integer  "discipline_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "bov_type"
+  end
+
   create_table "cell_skeds", :force => true do |t|
     t.integer  "number_couple"
     t.time     "start_time"
     t.time     "end_time"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "commentaries", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "com_text"
+    t.string   "com_file_file_name"
+    t.string   "com_file_content_type"
+    t.integer  "com_file_file_size"
+    t.datetime "com_file_updated_at"
+    t.string   "cfile_type"
+    t.integer  "cfile_object"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "competences", :force => true do |t|
@@ -54,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20120601194354) do
   end
 
   create_table "disciplines", :force => true do |t|
-    t.integer  "specialty_id"
+    t.integer  "speciality_id"
     t.string   "disc_name"
     t.string   "disc_cycle"
     t.string   "disc_partofcycle"
@@ -119,6 +153,20 @@ ActiveRecord::Schema.define(:version => 20120601194354) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "mes_recipient"
+    t.string   "mes_theme"
+    t.string   "mes_text"
+    t.string   "mes_file_file_name"
+    t.string   "mes_file_content_type"
+    t.integer  "mes_file_file_size"
+    t.datetime "mes_file_updated_at"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
   create_table "module_of_disciplines", :force => true do |t|
     t.integer  "mod_number"
     t.integer  "discipline_id"
@@ -126,6 +174,14 @@ ActiveRecord::Schema.define(:version => 20120601194354) do
     t.integer  "mod_numberofhours"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "reschedulings", :force => true do |t|
+    t.date     "res_date"
+    t.integer  "res_week"
+    t.integer  "res_dayofweek"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "specialities", :force => true do |t|
@@ -136,6 +192,7 @@ ActiveRecord::Schema.define(:version => 20120601194354) do
     t.datetime "updated_at",        :null => false
     t.string   "spec_description2"
     t.string   "spec_exams"
+    t.string   "spec_shifr"
   end
 
   create_table "students", :force => true do |t|

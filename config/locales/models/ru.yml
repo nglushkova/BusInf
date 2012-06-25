@@ -1,15 +1,14 @@
 ru:
   activerecord:
-    models:
-      user: Пользователь
+
     attributes:
-      profile:
-        user_name: Имя
-        user_secondname: Отчество
-        user_surname: Фамилия
-        user_password: Пароль
-        user_password_confirmation: Подтверждение пароля
-        user_status: Статус
-        user_group_id: Группа
-        user_phone: Телефон
-        user_birthday: Дата рождения
+            users:
+              user_name: "Имя"
+              user_secondname: "Отчество"
+              user_surname: "Фамилия"
+              user_password: "Пароль"
+              user_password_confirmation: "Подтверждение пароля"
+              user_status: "Статус"
+              user_group_id: "Группа"
+              user_phone: "Телефон"
+              user_birthday: "Дата рождения"
