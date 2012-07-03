@@ -1,6 +1,11 @@
 <div class="registration">
   <h1>Вход в личный кабинет</h1><br/>
 
+  <section>
+    <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div><br/>
+    <% end %>
+  </section>
   <%= form_for(:session, :url => sessions_path) do |f| %>
       <div>
         <%= f.label "E-mail" %><br/>

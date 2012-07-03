@@ -28,10 +28,7 @@ class UsersController < ApplicationController
     @title = "Регистрация пользователя"
     @user = User.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
+
   end
 
   # GET /users/1/edit
@@ -42,15 +39,17 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    user = User.new(params[:user])
+    @user = User.new(params[:user])
 
     respond_to do |format|
-      if user.save
-        sign_in user
-        redirect_to 'users/'+user.id.to_s
+      if @user.save
+        sign_in @user
+        format.html { redirect_to user_path(@user.id), notice: 'Student was successfully created.' }
+        format.json { render json: @user, status: :created, location: @user }
       else
         @title = "Регистрация пользователя"
-        render 'new'
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

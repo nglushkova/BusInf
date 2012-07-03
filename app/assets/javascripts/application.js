@@ -14,20 +14,35 @@
 //= require jquery_ujs
 //= require_tree .
 $(function(){
+
+    $('ul.tabs').delegate('li:not(.current)', 'click', function() {
+		$(this).addClass('current').siblings().removeClass('current')
+			.parents('div.section').find('div.box').hide().eq($(this).index()).fadeIn(150);
+	});
+
     $("#butday").click(function(){
         $("#sched_two_week:visible").hide(5);
         $("#schedule:hidden").show(10);
+        $(this).css("border-color", "#003355");
+        $("#buttwoweek").css("border-color", "#207DB0");
+        $("#main").css("height", "700px");
+    });
+
+    $("#event_group_id").change(function(){
+        $("#student").html('<% @st = User.find_all_by_group_id(@event.group_id) %>');
+        return false;
     });
 
     $("#buttwoweek").click(function(){
         $("#date:visible").hide(5);
         $("#schedule:visible").hide(5);
         $("#sched_two_week:hidden").show(10);
-        $("#twoweek").css("border", "5px solid #003355;");
+        $(this).css("border-color", "#003355");
+        $("#butday").css("border-color", "#207DB0");
+        $("#main").css("height", "850px");
+        return false;
      });
-    $("#user_user_birthday").datepicker();
-
-    $("#datepicker").datepicker({
+    $("#event_ev_date").datepicker({
         dayNames: ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
         dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
         firstDay: 1,
@@ -36,14 +51,24 @@ $(function(){
         prevText: '<<',
         showOtherMonths: true,
         selectOtherMonths: true,
-        dateFormat: 'DD dd MM yy',
-        onSelect: function(dateText, inst) {
-            var now = new Date();
+        dateFormat: 'dd.mm.yy'
+    });
+
+    $("#datepicker").datepicker({
+        dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+        dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+        firstDay: 1,
+        monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+        nextText: '>> ',
+        prevText: '<<',
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        dateFormat: 'DD dd.mm.yy',
+        onSelect: function(dateText) {
             $("#date:hidden").show(5);
             $("#sched_two_week:visible").hide(5);
             $("#schedule:hidden").show(5);
-            $("#date").val(dateText);
-
+            $("#date").val("Расписание на " + dateText);
         }
     });
 
@@ -63,13 +88,25 @@ $(function(){
     });
 
     $("#user_user_status").change(function(){
-        if ($("#user_user_status option:selected").val() == "student")
-            $("#status:hidden").show('fast');
+        if ($("#user_user_status option:selected").val() == "student"){
+            $("#code:visible").hide(5);
+            $("#status:hidden").show(5);
+        }
         else {
-            $("#status:visible").hide('fast');
-            $("#user_group_id [value='']").attr("selected", "selected");
+            if ($("#user_user_status option:selected").val() == "teacher"){
+                $("#status:visible").hide(5);
+                $("#code:hidden").show(5);
+            }
+            else{
+                $("#status:visible").hide(5);
+                $("#code:visible").hide(5);
+                $("#user_group_id [value='']").attr("selected", "selected");
+                $("#user_code").val() = '';
+            }
         };
     });
+
+
 
 
     (function(){

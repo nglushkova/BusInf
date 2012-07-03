@@ -25,11 +25,13 @@
         <td><span class="zvez">*</span></td>
         <td><%= f.select(:user_status, {"Студент" => "student", "Преподаватель" => "teacher"}, {:include_blank => 'Ваш статус'}, {:class => "field", :disabled => "disabled"} )%></td>
       </tr>
-      <tr id="status" style="display: none;">
+      <% if @user.user_status == "student" %>
+      <tr id="status">
         <td><%= f.label "Группа" %></td>
         <td><span class="zvez">*</span></td>
-        <td><%= f.select(:group_id, Group.all.collect { |g| [g.gr_cipher, g.id]}, { :include_blank => 'Выберите группу'}, {:class => "field"}, :disabled => "diisabled") %></td>
+        <td><%= f.select(:group_id, Group.all.collect { |g| [g.gr_cipher, g.id]}, { :include_blank => 'Выберите группу'}, {:class => "field", :disabled => "disabled"}) %></td>
       </tr>
+          <% end %>
       <tr>
         <td><%= f.label "Email" %></td>
         <td><span class="zvez">*</span></td>
@@ -55,7 +57,7 @@
       <tr>
         <td width="45%"><%= f.label "Дата рождения" %></td>
         <td><span class="zvez">*</span></td>
-        <td><%= f.date_select(:user_birthday, {:order => [:day, :month, :year], :use_month_names => ['Январь', 'Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'], :start_year => 1930, :end_year => Time.now.year, :include_blank => true}) %></td>
+        <td><%= f.date_select(:user_birthday, {:order => [:day, :month, :year], :use_month_names => ['Январь', 'Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'], :start_year => 1930, :end_year => Time.now.year, :include_blank => true}, {:disabled => "disabled"}) %></td>
       </tr>
       <tr>
         <td><%= f.label "Фото" %></td>
@@ -76,8 +78,7 @@
     </table>
     </br><br/></br></br></br><br/>
     <%= f.submit :value => "Сохранить изменение", :class => "actions" %>
+    <%= link_to "Отмена", :back, :class=>"actions" %>
 <% end %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
 </div>

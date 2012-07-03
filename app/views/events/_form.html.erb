@@ -1,9 +1,38 @@
 <%= form_for(@event) do |f| %>
-  <%= render 'shared/error_message', :target => @event %>
-
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= render 'shared/error_message', :target => @event %>
+    <div style="display: none">
+      <%= f.text_field :ev_author, :value => current_user.id %>
+    </div>
+    <table style="margin-left: 20px">
+      <tbody>
+      <tr>
+        <td width="30%"><%= f.label "Дата" %></td>
+        <td><%= f.text_field :ev_date, :class => "field" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Время" %></td>
+        <td><%= f.select(:cell_sked_id, CellSked.all.collect {|cs| [Russian::strftime(cs.start_time, "%H:%M"), cs.id]}, {:prompt=>''})%></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Событие"%></td>
+        <td><%= f.text_area :ev_text, :rows => 2, :class => "field"%></td>
+      </tr>
+      <tr><td><p style="text-decoration: underline">Кому:</p></td></tr>
+      <tr>
+        <td><%= f.label "Группа" %></td>
+        <% @event.group_id = current_user.group_id %>
+        <td><%= f.select(:group_id, Group.all.collect {|g| [g.gr_cipher, g.id]}, {:include_blank => 'Всем'}, {:class=>"field"})%></td>
+      </tr>
+      <tr>
+        <td><%= f.label "Студент" %></td>
+        <div id="student" style="display: none">
+          <% @st = User.find_all_by_group_id(@event.group_id) %>
+        </div>
+        <td><%= f.select(:ev_recipient, @st.map {|s| [s.user_surname+' '+s.user_name, s.id]}.sort, {:prompt => 'Всем'}, {:class=>"field"}) %></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= f.submit :value=>'', :class =>"button_ok" %>
+    </div>
 <% end %>
