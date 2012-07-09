@@ -1,5 +1,21 @@
+
+<br />
+
 <%= form_for(@speciality) do |f| %>
-    <%= render 'shared/error_message', :target => @speciality %>
+    <% if @speciality.errors.any? %>
+        <div id="error_explanation" class="field">
+          <h2>Найдено ошибок: <%= @speciality.errors.count  %>. Необходимо сделать следующее:</h2>
+
+          <ul>
+            <% @speciality.errors.full_messages.each do |msg| %>
+                <br \><li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
     <table>
       <tbody>
       <tr>
@@ -24,6 +40,6 @@
     </table>
 
     <div>
-      <%= f.submit :value=>"Сохранить", :class => "actions" %>
+      <%= f.submit "Сохранить" %>
     </div>
 <% end %>

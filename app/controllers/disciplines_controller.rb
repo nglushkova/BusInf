@@ -47,7 +47,7 @@ class DisciplinesController < ApplicationController
 
     respond_to do |format|
       if @discipline.save
-        format.html { redirect_to '/desciplines', notice: 'Дисциплина успешно добавлена' }
+        format.html { redirect_to '/disciplines', notice: 'Дисциплина успешно добавлена' }
         format.json { render json: @discipline, status: :created, location: @discipline }
       else
         format.html { render action: "new" }

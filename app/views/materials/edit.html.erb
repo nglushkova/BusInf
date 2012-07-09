@@ -1,6 +1,19 @@
-<h1>Editing material</h1>
+<h1>Редактирование материала</h1>
+
+
+
+<% form_for(@material, :html => {:multipart => true}) do |f| %>
+    <!--здесь было эррор мессаджес-->
+    <% @material.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+
+
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @material %> |
-<%= link_to 'Back', materials_path %>
+<%= link_to 'Отменить', @material %> |
+<%= link_to 'К списку материалов', materials_path %>

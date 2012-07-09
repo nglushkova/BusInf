@@ -1,26 +1,16 @@
 <h1>Направления подготовки</h1><br/>
-<p id="notice"><%= notice %></p><br/>
+<p id="notice"><%= notice %></p>
+На сегодняшний день кафедра готовит специалистов по следующим направлениям:
 
-<table>
-  <tr>
-    <th>Название</th>
-    <th>Сокращение</th>
-  </tr>
+<% @specialities.each do |speciality| %>
+    <h2><%= speciality.spec_name %> (<%= speciality.spec_redaction %>)</h2>
+    Вступительные испытания:  <%= speciality.spec_exams %>        <br/>
 
-  <% @specialities.each do |speciality| %>
-      <tr>
-        <td><%= speciality.spec_name %></td>
-        <td><%= speciality.spec_redaction %></td>
-        <td><%= link_to 'Подробнее', speciality %></td>
-        <td><%= link_to 'Редактировать', edit_speciality_path(speciality) %></td>
-        <td><%= link_to 'Удалить', speciality, confirm: 'Действительно удалить?', method: :delete %></td>
-      </tr>
-  <% end %>
+    Подробнее о направлении <%= speciality.spec_name %> <%= link_to '>>' , speciality %>  <br/>
+    <br/>
+
+<% end %>
 
 
-
-</table>
-
-<br />
 
 <%= link_to 'Добавить специальность', new_speciality_path %>

@@ -1,24 +1,25 @@
+<br />
 <%= form_for(@formation_of_competence) do |f| %>
-  <% if @formation_of_competence.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@formation_of_competence.errors.count, "error") %> prohibited this formation_of_competence from being saved:</h2>
+    <% if @formation_of_competence.errors.any? %>
+        <div id="error_explanation" class="field">
+          <h2><%= pluralize(@formation_of_competence.errors.count, "error") %> prohibited this formation_of_competence from being saved:</h2>
 
-      <ul>
-      <% @formation_of_competence.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @formation_of_competence.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <table>
       <tbody>
       <tr>
         <td width="300px"><%= f.label "Компетенция" %></td>
-        <td><%= f.select :competence_id, Competence.all.collect {|c| [c.comp_name, c.id]}, {:include_blank => 'Выберите компетенцию'}, {:class => "field"} %></td>
+        <td><%= f.select :competence_id, Competence.all.collect {|c| [c.comp_group, c.id]}, {:include_blank => 'Выберите компетенцию'}, {:class => "field"} %></td>
       </tr>
       <tr>
-        <td><%= f.label "формируется [v] / требуется [ ]" %></td>
+        <td><%= f.label "формируется [ ] / требуется [v]" %></td>
         <td><%= f.check_box :foc_type %> </td>
       </tr>
       <tr>
@@ -35,15 +36,15 @@
       </tr>
       <tr>
         <td><%= f.label "Знания" %></td>
-        <td><%= f.text_area :foc_knowledge, :class => "field" %>  </td>
+        <td><%= f.text_area :foc_knowledge, :class => "field"  , :rows =>"5" , :cols =>"150"%>  </td>
       </tr>
       <tr>
         <td><%= f.label "Умения" %></td>
-        <td><%= f.text_area :foc_ability, :class => "field" %>  </td>
+        <td><%= f.text_area :foc_ability, :class => "field"  , :rows =>"5" , :cols =>"150"%>  </td>
       </tr>
       <tr>
         <td><%= f.label "Навыки" %></td>
-        <td><%= f.text_area :foc_skills, :class => "field" %>  </td>
+        <td><%= f.text_area :foc_skills, :class => "field"  , :rows =>"5" , :cols =>"150"%>  </td>
       </tr>
 
       </tbody>
@@ -55,7 +56,7 @@
 
 
 
-  <div class="actions">
-    <%= f.submit "Сохранить изменения"%>
-  </div>
+    <div class="actions">
+      <%= f.submit "Сохранить изменения"%>
+    </div>
 <% end %>

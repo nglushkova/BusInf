@@ -1,21 +1,23 @@
-<h1>Listing materials</h1>
+<h1>Загруженные учебные и методические материалы</h1>
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
+    <th>Файл</th>
+    <th>Прикреплен к...</th>
     <th></th>
   </tr>
 
-<% @materials.each do |material| %>
-  <tr>
-    <td><%= link_to 'Show', material %></td>
-    <td><%= link_to 'Edit', edit_material_path(material) %></td>
-    <td><%= link_to 'Destroy', material, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  <% @materials.each do |material| %>
+      <tr>
+        <td><%=  material.file_name %></td>
+        <td>  название дисциплины </td>
+        <td><%= link_to 'Показать', material %></td>
+        <td><%= link_to 'Редактировать', edit_material_path(material) %></td>
+        <td><%= link_to 'Удалить', material, confirm: 'Вы уверены', method: :delete %></td>
+      </tr>
+  <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Material', new_material_path %>
+<%= link_to 'Загрузить новый материал', new_material_path %>

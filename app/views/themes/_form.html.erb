@@ -1,17 +1,70 @@
 <%= form_for(@theme) do |f| %>
-  <% if @theme.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
+    <% if @theme.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
 
-      <ul>
-      <% @theme.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+            <% @theme.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div>
+      <%= f.label "Входит в дисциплину " %>
+      <% def d_id  %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%
+         #d_id=@theme.discipline.id
+         f.select :discipline_id, Discipline.all.collect {|d| [d.disc_name, d.id]}, {:include_blank => 'Выберите дисциплину'}, {:class => "field"}
+         #disc_id=Discipline.find(:discipline_id).module_of_discipline.id
+         #@dis=@theme.discipline                убрала для скрина, ошибка
+         #@theme.discipline_id=d_id
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+         #     убрала для скрина, ошибка f.select :module_of_discipline_id, ModuleOfDiscipline.find(discipline_id=@dis.id).collect  {|m| [m.mod_name, m.id]}, {:include_blank => 'Выберите модуль'}, {:class => "field"}
+
+      %>
+
+    </div>
+
+
+    <div>
+      <%= f.label "Входит в модуль " %>
+
+      <%=  f.select :module_of_discipline_id, ModuleOfDiscipline.all().collect  {|m| [m.mod_name, m.id]}, {:include_blank => 'Выберите модуль'}, {:class => "field"}    %>
+      <%= f.text_field :module_of_discipline_id%>
+      <%= f.label "список модулей дисциплины: " %>
+    </div>
+
+    <!--здесь надо добавить модуль дисциплины-->
+
+
+    <div>
+      <%= f.label "Название темы" %>
+      <%= f.text_area :theme_name, :rows=>3%>
+    </div>
+    <div>
+      <%= f.label "Номер темы в плане модуля" %>
+      <%= f.text_field :theme_inmodule %>
+    </div>
+    <div>
+      <%= f.label "Номер темы в плане дисциплины" %>
+      <%= f.text_field :theme_indiscipline %>
+    </div>
+
+    <div>
+      <%= f.label "Количество часов на изучение:" %>
+      <%= f.text_field :theme_numberofhour %>
+    </div>
+    <div>
+      <%= f.label "Применяемые технологии преподавания:" %>
+      <%= f.text_area :theme_technologytraining, :rows=>3 %>
+    </div>
+
+
+
+    <div class="actions">
+      <%= f.submit "Сохранить" %>
+    </div>
 <% end %>

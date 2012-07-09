@@ -4,8 +4,8 @@ class Speciality < ActiveRecord::Base
   has_many :disciplines
   attr_accessible :spec_name, :spec_redaction, :spec_description , :spec_description2, :spec_exams
 
-  validates :spec_name, :presence => true, :length => {:maximum => 150}
-  validates :spec_redaction, :presence => true, :length => {:maximum => 6}
+  validates_presence_of :spec_name, :on => :create, :message => "Вписать название специальности"
+  validates_presence_of :spec_redaction, :on => :create, :message => "Вписать сокращение специальности"
 end
 
 #

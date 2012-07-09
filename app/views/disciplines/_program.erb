@@ -1,0 +1,1469 @@
+
+
+
+<%= form_for(@discipline) do |f| %>
+    <% if @discipline.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@discipline.errors.count, "ошибка(ок)!") %> Необходимо:</h2>
+
+          <ul>
+            <% @discipline.errors.full_messages.each do |msg| %>
+                <br \><li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+
+
+
+
+    <div id="form_name">
+      <p align="right"  >Форма 1. Титульный лист</p>
+    </div>
+    <div id="form">
+      <p align="center">МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСКОЙ ФЕДЕРАЦИИ</p>
+      <p align="center">Федеральное государственное бюджетное образовательное учреждение</p>
+      <p align="center">высшего профессионального образования</p>
+      <p align="center">«Вятский государственный университет»</p>
+      <p align="right">УТВЕРЖДАЮ</p>
+      <p align="right">Декан выпускающего</p>
+      <p align="right">факультета</p>
+      <p align="right">_________/ _________ /</p>
+      <p align="right">«___»________ 20____ г.</p>
+
+      <p align="center">Рабочая программа по дисциплине</p>
+      <br>
+      <p align="center"> «<%= @discipline.disc_name %>» </p>
+      <br>
+      <!--<p align="center">  __________________________-->
+      <!--</p>-->
+      <table>
+        <tbody>
+        <tr>
+          <td width="300px"><%= f.label "Название дисциплины" %></td>
+          <td><%= f.text_field :disc_name, :class => "field" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label "Квалификация выпускника" %></td>
+          <td>
+            <select name="spisok1">
+              <optgroup label="Квалификация выпускника" selected>
+                <option value="pt1" >бакалавр</option>
+                <option value="pt2">магистр</option>
+                <option value="pt3">специалист</option>
+              </optgroup>
+            </select>
+            <!--<br> __________________________________-->
+            <!--<br>      (бакалавр, магистр, специалист)-->
+
+          </td>
+        </tr>
+        <tr>
+          <td width="300px"><%= f.label "Направление подготовки" %>
+            <br> (специальность)
+          </td>
+
+          <td width="300px">
+            <br>
+            <br><br>
+            <%= f.select :speciality_id, Speciality.all.collect {|s| [s.spec_name, s.id]}, {:include_blank => 'Выберите специальность'}, {:class => "field"} %>
+            <!--<br> __________________________________-->
+            <br>  <%= f.label "(наименование)" %>
+            <br>  <input type=text>
+            <!--<br>  __________________________________-->
+            <br>  <%= f.label "(шифр)" %>
+          </td>
+        </tr>
+        <tr>
+          <td width="300px"><%= f.label "Профиль" %>
+            <br> (специализация,
+            <br> направление
+            <br> подготовки)
+          </td>
+
+          <td width="300px">
+            <br>
+            <br>
+            <br>  <input type=text>
+            <!--<br> __________________________________-->
+            <br>  <%= f.label "(шифр)" %>
+            <br>  <input type=text>
+            <!--<br>  __________________________________-->
+            <br>  <%= f.label "(наименование)" %>
+          </td>
+        </tr>
+        добавить профиль
+
+        <tr>
+          <td width="300px"><%= f.label "Трудоемкость" %>
+            <br> дисциплины, час
+          </td>
+
+          <td width="300px">
+            <br>  <input type=text>
+            <!--<br> __________________________________-->
+
+          </td>
+        </tr>
+        <tr>
+          <td width="300px"><%= f.label "Трудоемкость" %>
+            <br> дисциплины, ЗЕТ
+          </td>
+
+          <td width="300px">
+            <br>  <input type=text>
+            <!--<br> __________________________________-->
+
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <p align="center"> Киров,<input type=text>г.  </p>
+
+
+      <br>
+
+      <p id="write_1" align="center">
+        Записать Форму в рабочую программу
+      </p>
+
+      <script>
+          $('p.write_1').click(function(){
+              var text=  $('this').parent()           ;
+              console.log(text) ;
+
+
+          });
+      </script>
+
+
+
+    </div>
+
+
+
+
+
+    <div id="form_name">
+      <p align="right"> Форма 2. Оборотная сторона титульного листа  </p>
+    </div>
+
+
+    <div id="form">
+    <table border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="130" valign="top"><p>Разработчики </p></td>
+        <td width="103" valign="top"><p align="center"><input type=text size=20 /> </p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="113" valign="top"><p align="center">__________________</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="253" valign="top"><p align="center"><input type=text size=40 > </p></td>
+      </tr>
+      <tr>
+        <td width="130" valign="top"><p>УМКД</p></td>
+        <td width="103" valign="top"><p align="center">дата</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="113" valign="top"><p align="center">Подпись</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="253" valign="top"><p align="center">степень, звание, ФИО</p></td>
+      </tr>
+      <tr>
+        <td width="130" valign="top"><p>&nbsp;</p></td>
+        <td width="103" valign="top"><p align="center"><input type=text size=20 date=the_date> </p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="113" valign="top"><p align="center">__________________</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="253" valign="top"><p align="center"><input type=text size=40 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="130" valign="top"><p>&nbsp;</p></td>
+        <td width="103" valign="top"><p align="center">дата</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="113" valign="top"><p align="center">Подпись</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="253" valign="top"><p align="center">степень, звание, ФИО</p></td>
+      </tr>
+      <tr>
+        <td width="130" valign="top"><p>&nbsp;</p></td>
+        <td width="103" valign="top"><p align="center"><input type=text size=20 date=the_date> </p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="113" valign="top"><p align="center">__________________</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="253" valign="top"><p align="center"><input type=text size=40 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="130" valign="top"><p>&nbsp;</p></td>
+        <td width="103" valign="top"><p align="center">дата</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="113" valign="top"><p align="center">Подпись</p></td>
+        <td width="19" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="253" valign="top"><p align="center">степень, звание, ФИО</p></td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    <table border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="12" valign="top"><p><strong>Рабочая программа рассмотрена на заседании кафедры</strong></p></td>
+      </tr>
+      <tr>
+        <td colspan="12" valign="top"><p><strong><input type=text size=125 date=the_date>&nbsp;</strong></p></td>
+      </tr>
+      <tr>
+        <td width="154" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="122" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="82" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="27" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="119" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="45" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="53" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="40" valign="top"><p align="center">&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="154" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="122" valign="top"><p align="center">протокол №</p></td>
+        <td colspan="2" valign="top"><p align="center"><input type=text size=10 date=the_date>&nbsp;</p></td>
+        <td width="82" valign="top"><p align="center">от «</p></td>
+        <td colspan="2" valign="top"><p align="center"><input type=text size=10 date=the_date>&nbsp;</p></td>
+        <td width="27" valign="top"><p align="center">»</p></td>
+        <td width="119" valign="top"><p align="center"><input type=text size=20 date=the_date>&nbsp;</p></td>
+        <td width="45" valign="top"><p align="center">20</p></td>
+        <td width="53" valign="top"><p align="center"><input type=text size=10 date=the_date>&nbsp;</p></td>
+        <td width="40" valign="top"><p align="center">г.</p></td>
+      </tr>
+      <tr>
+        <td width="154" valign="top"><p>&nbsp;</p></td>
+        <td width="122" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top">  <p align="center">&nbsp;</p></td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+        <td valign="top">&nbsp;</td>
+        <td width="40" valign="top"><p>&nbsp;</p>
+          <p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="154" valign="top"><p>Заведующий</p></td>
+        <td width="122" valign="top"><p align="center"><input type=text size=20 date=the_date></p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">__________</p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="6" valign="top"><p align="center"><input type=text size=40 date=the_date> </p></td>
+      </tr>
+      <tr>
+        <td width="154" valign="top"><p>кафедрой</p></td>
+        <td width="122" valign="top"><p align="center">дата</p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">Подпись</p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="6" valign="top"><p align="center">степень, звание, ФИО</p></td>
+      </tr>
+      <tr>
+        <td width="154" valign="top"><p><input type=text size=20 date=the_date></p></td>
+        <td width="122" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="48" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="6" valign="top"><p align="center">&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="154" valign="top"><p align="center">(ведущей дисциплину)</p></td>
+        <td colspan="11" valign="top"><p align="center">&nbsp;</p></td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    <table border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="12" valign="top"><p><strong>Рабочая программа согласована с выпускающей кафедрой</strong></p></td>
+      </tr>
+      <tr>
+        <td colspan="12" valign="top"><p><strong><input type=text size=125 date=the_date>&nbsp;</strong></p></td>
+      </tr>
+      <tr>
+        <td width="157" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="120" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="57" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="27" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="138" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="44" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="69" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="35" valign="top"><p align="center">&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="157" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="120" valign="top"><p align="center">протокол №</p></td>
+        <td colspan="2" valign="top"><p align="center"><input type=text size=10 date=the_date>&nbsp;</p></td>
+        <td width="57" valign="top"><p align="center"> от «</p></td>
+        <td colspan="2" valign="top"><p align="center"><input type=text size=10 date=the_date>&nbsp;</p></td>
+        <td width="27" valign="top"><p align="center">»</p></td>
+        <td width="138" valign="top"><p align="center"><input type=text size=20 date=the_date>&nbsp;</p></td>
+        <td width="44" valign="top"><p align="center">20</p></td>
+        <td width="69" valign="top"><p align="center"><input type=text size=10 date=the_date>&nbsp;</p></td>
+        <td width="35" valign="top"><p align="center">г.</p></td>
+      </tr>
+      <tr>
+        <td width="157" valign="top"><p>&nbsp;</p></td>
+        <td width="120" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="57" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="50" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="29" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="27" valign="top">&nbsp;</td>
+        <td width="138" valign="top">&nbsp;</td>
+        <td width="44" valign="top">&nbsp;</td>
+        <td width="69" valign="top">&nbsp;</td>
+        <td width="35" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="157" valign="top"><p>Заведующий</p></td>
+        <td width="120" valign="top"><p align="center"><input type=text size=20 date=the_date></p></td>
+        <td width="57" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">_________</p></td>
+        <td width="50" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="6" valign="top"><p align="center"><input type=text size=40 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="157" valign="top"><p>кафедрой</p></td>
+        <td width="120" valign="top"><p align="center">дата</p></td>
+        <td width="57" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="2" valign="top"><p align="center">Подпись</p></td>
+        <td width="50" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="6" valign="top"><p align="center">степень, звание, ФИО</p></td>
+      </tr>
+      <tr>
+        <td width="157" valign="top"><p><input type=text size=20 date=the_date></p></td>
+        <td width="120" valign="top"><p align="center">&nbsp;</p></td>
+        <td width="57" valign="top">&nbsp;</td>
+        <td colspan="2" valign="top">&nbsp;</td>
+        <td width="50" valign="top"><p align="center">&nbsp;</p></td>
+        <td colspan="6" valign="top"><p align="center">&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td width="157" valign="top"><p align="center">(выпускающей)</p></td>
+        <td colspan="11" valign="top"><p align="center">&nbsp;</p></td>
+      </tr>
+    </table>
+
+
+    <br>
+
+    </div>
+
+
+    <div id="form_name">
+      <p align="right">Форма 3. Содержание рабочей  программы</p>
+    </div>
+
+
+    <div id="form">
+
+    <h2>Концепция курса</h2>
+
+
+    <p>
+
+      <textarea name=address rows=30 cols=150>
+
+
+        Курс  является одним из важнейших в подготовке  специалистов для
+
+        Он важен  для студентов, обучающихся по профилю  ... ,
+        поскольку
+
+        Курс  формирует у обучающегося знания, умения и навыки в области изучения ... ,
+        лежащих в основе подходов к ...
+
+        Большое  внимание уделяется ...
+
+        Для  успешного освоения курса студент должен обладать знаниями в области дисциплин: ...
+        и базовой профессиональной дисциплины  –  ...
+
+        Знания,  полученные в ходе освоения данного курса необходимы для последующего изучения завершающих обучение профильных дисциплин, связанных с более глубоким изучением ...
+
+        Концепция  курса предусматривает широкое применение активных методов обучения.
+
+        Так, практически каждое занятие ...
+        Весь  лекционный курс обеспечен  ...
+        При выполнении лабораторных работ обучающимся предлагаются ...
+
+        Также  в рамках курса активно применяются возможности дистанционных образовательных технологий.
+        На сайте Центра дистанционных образовательных технологий ВятГУ  (http://moodle.vyatsu.ru) размещены
+
+
+      </textarea>
+
+    <p>
+
+    <h2>Цель и задачи, решаемые дисциплиной</h2>
+
+
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td width="24%"><p>Цель дисциплины:</p></td>
+        <td width="75%"><p><%= f.text_area :disc_objective, :class => "field" %></p></td>
+      </tr>
+      <tr>
+        <td width="24%"><p>Задачи дисциплины:</p></td>
+        <td width="75%">
+          <textarea name=address2 rows=15 cols=112> </textarea>
+        </td>
+      </tr>
+    </table>
+
+    <h2>Положение дисциплины в структуре ООП</h2>
+
+    <table border="1" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td width="27%"><p>Дисциплина входит в учебный цикл</p></td>
+        <td width="72%"><p>
+
+
+
+          <%= f.select :disc_cycle, ['Гуманитарный, социальный и экономический цикл' , 'Математический и естественнонаучный цикл', 'Профессиональный цикл','Факультативы','Физическая культура'], {:include_blank => 'Выберите цикл дисциплин'}, {:class => "field"} %>
+
+
+
+
+          <%  %>
+        </p>
+        </td>
+      </tr>
+      <tr>
+        <td width="27%"><p>Дисциплина входит в модуль ООП</p></td>
+        <td width="72%"><p><%= f.select :disc_cycle, ['Федеральный компонент' , 'Региональный (вузовский) компонент'], {:include_blank => 'Выберите подцикл дисциплин'}, {:class => "field"} %></p></td>
+      </tr>
+      <tr>
+        <td width="27%"><p>Обеспечивающие (предшествующие)    дисциплины</p></td>
+        <td width="72%"><p><textarea name=address rows=7 cols=112> </textarea></p></td>
+      </tr>
+      <tr>
+        <td width="27%"><p>Обеспечиваемые (последующие)    дисциплины</p></td>
+        <td width="72%"><p><textarea name=address rows=7 cols=112> </textarea></td>
+      </tr>
+    </table>
+
+
+
+    <h2 id="table_head">Таблица 1. Требования к компетенциям  обучающегося, необходимым для освоения дисциплины (предшествующие дисциплины)</h2>
+
+    <table border="1" cellspacing="0" cellpadding="0" width="100%" id="table_1" >
+      <tbody>
+      <tr>
+        <td width="10%"><p align="center">Шифр компетенции</p></td>
+        <td width="25%"><p align="center">Наименование компетенции</p></td>
+        <td width="44%" colspan="2"><p align="center">Знания, умения, навыки, формирующие компетенцию</p></td>
+        <td width="19%"><p align="center">Обеспечивается предшествующей дисциплиной<br />
+          (предыдущим уровнем образования)</p></td>
+      </tr>
+      <tr id="item">
+        <td width="10%" rowspan="3"><p><input type=text size=15 date=the_date></p></td>
+        <td width="25%" rowspan="3"><p><textarea name=address rows=10 cols=35> </textarea></p></td>
+        <td width="6%"><p>Знает</p></td>
+        <td width="37%"><p><textarea name=address rows=7 cols=53> </textarea></p></td>
+        <td width="19%"><p><textarea name=address rows=7 cols=30> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Умеет</p></td>
+        <td width="37%"><p>
+          <textarea name=address3 rows=7 cols=53> </textarea>
+        </p></td>
+        <td width="19%"><p><textarea name=address rows=7 cols=30> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Владеет</p></td>
+        <td width="37%"><p><textarea name=address rows=7 cols=53> </textarea></p></td>
+        <td width="19%"><p><textarea name=address rows=7 cols=30> </textarea></p></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table id="node" border="0">
+      <tr>
+        <td><p id="addRow1">Добавить шифр компетенции</p></td>
+      </tr>
+    </table>
+
+
+
+
+    <script>
+        var AddingRow1 = $('#table_1 tbody>#item');
+
+        $('#addRow1').click(function(){
+
+            console.log($('#table_1 tbody>#item'));
+            AddingRow1.clone(true).insertAfter('#table_1 tbody>tr:last');
+        });
+    </script>
+
+    <h2>Таблица 2. Результаты обучения (характеристика  формируемых компетенций)</h2>
+    <table border="1" cellspacing="0" cellpadding="0" width="100%" id="table_2">
+      <tbody>
+      <tr>
+        <td width="9%"><p align="center">Шифр компетенции</p></td>
+        <td width="15%"><p align="center">Наименование компетенции</p></td>
+        <td width="10%" valign="top"><p align="center">Уровень формируемых компетенций</p></td>
+        <td width="64%" colspan="2"><p align="center">Знания, умения, навыки, формирующие компетенцию</p></td>
+      </tr>
+      <tr id="item">
+        <td width="9%" rowspan="9"><p><input type=text size=15 date=the_date></p></td>
+        <td width="15%" rowspan="9"><p><textarea name=address rows=10 cols=21> </textarea></p></td>
+        <td width="10%" rowspan="3"><p>Начальный</p></td>
+        <td width="6%"><p>Знает</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea> </p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Умеет</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Владеет</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="10%" rowspan="3"><p>Продвинутый</p></td>
+        <td width="6%"><p>Знает</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Умеет</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Владеет</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="10%" rowspan="3"><p>Высокий</p></td>
+        <td width="6%"><p>Знает</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Умеет</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      <tr id="item">
+        <td width="6%"><p>Владеет</p></td>
+        <td width="58%"><p><textarea name=address rows=2 cols=90> </textarea></p></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table id="node" border="0">
+      <tr>
+        <td><p id="addRow2">Добавить шифр компетенции</p></td>
+      </tr>
+    </table>
+
+    <script>
+        var AddingRow2 = $('#table_2 tbody>#item');
+
+        $('#addRow2').click(function(){
+            console.log($('#table_2 tbody>#item'));
+            AddingRow2.clone(true).insertAfter('#table_2 tbody>tr:last');
+
+
+        });
+    </script>
+
+
+    <h2>Структура дисциплины</h2>
+
+
+    <h3>Таблица 3. Содержание дисциплины (модульный  план)</h3>
+    <table border="1" cellspacing="0" cellpadding="0" width="100%" id="table_3" data-count="1">
+      <tbody>
+      <tr>
+        <td width="3%" rowspan="2"><p align="center">№ модуля</p></td>
+        <td width="15%" nowrap="nowrap" rowspan="2"><p align="center">Наименование модулей</p>
+          <p align="center"> дисциплины
+            (разделов, тем)</p></td>
+        <td width="7%" colspan="2"><p align="center">Очная, полный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Очная, второе высшее, сокращенный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Очная, на базе СПО, сокращенный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Очно-заочная, полный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Очно-заочная, второе высшее, сокращенный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Очно-заочная, на базе СПО, сокращенный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Заочная, полный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Заочная, второе высшее, сокращенный срок</p></td>
+        <td width="7%" colspan="2"><p align="center">Заочная, на базе СПО, сокращенный срок</p></td>
+        <td width="9%" rowspan="2"><p align="center">Шифр формируемой компетенции</p></td>
+      </tr>
+      <tr>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+        <td width="3%"><p align="center">Часов</p></td>
+        <td width="3%"><p align="center">ЗЕТ</p></td>
+      </tr>
+      <tr  id="item">
+        <td width="3%" valign="center" align="center" id="module_number" contenteditable="true"  onchange="Calc_3()"></td>
+        <td width="15%" valign="center" id="c2"><textarea name="module_name" rows=2 cols=25></textarea></td>
+        <td  id="c3" width="3%" align="center"  contenteditable="true"></td>
+        <td id="c4" width="3%" align="center" contenteditable="true"></td>
+        <td id="c5" width="3%" align="center" contenteditable="true"></td>
+        <td id="c6" width="3%" align="center" contenteditable="true"></td>
+        <td id="c7" width="3%" align="center" contenteditable="true"></td>
+        <td id="c8" width="3%" align="center" contenteditable="true"></td>
+        <td id="c9" width="3%" align="center" contenteditable="true"></td>
+        <td id="c10" width="3%" align="center" contenteditable="true"></td>
+        <td id="c11" width="3%" align="center" contenteditable="true"></td>
+        <td id="c12" width="3%" align="center" contenteditable="true"></td>
+        <td id="c13" width="3%" align="center" contenteditable="true"></td>
+        <td id="c14" width="3%" align="center" contenteditable="true"></td>
+        <td id="c15" width="3%" align="center" contenteditable="true"></td>
+        <td id="c16" width="3%" align="center" contenteditable="true"></td>
+        <td id="c17" width="3%" align="center" contenteditable="true"></td>
+        <td id="c18" width="3%" align="center" contenteditable="true"></td>
+        <td id="c19" width="3%" align="center" contenteditable="true"></td>
+        <td id="c20" width="3%" align="center" contenteditable="true"></td>
+        <td width="9%" valign="top" align="center"><textarea name="address4" rows=2 cols=10></textarea></td>
+      </tr>
+
+      <tr  id="sum">
+        <td width="3%" valign="center" align="center" ></td>
+        <td width="15%" nowrap="nowrap" ><p valign="center" align="center">ИТОГО:</p></td>
+        <td  id="c3" width="3%" nowrap="nowrap"><p align="center"></p></td>
+        <td  id="c4" width="3%" nowrap="nowrap"><p align="center"></p></td>
+        <td  id="c5" width="3%"><p align="center"></p></td>
+        <td  id="c6" width="3%"><p align="center"></p></td>
+        <td  id="c7" width="3%"><p align="center"></p></td>
+        <td  id="c8" width="3%"><p align="center"></p></td>
+        <td  id="c9" width="3%"><p align="center"></p></td>
+        <td  id="c10" width="3%"><p align="center"></p></td>
+        <td  id="c11" width="3%"><p align="center"></p></td>
+        <td  id="c12" width="3%"><p align="center"></p></td>
+        <td  id="c13" width="3%"><p align="center"></p></td>
+        <td  id="c14" width="3%"><p align="center"></p></td>
+        <td  id="c15" width="3%"><p align="center"></p></td>
+        <td  id="c16" width="3%"><p align="center"></p></td>
+        <td  id="c17" width="3%"><p align="center"></p></td>
+        <td  id="c18" width="3%"><p align="center"></p></td>
+        <td  id="c19" width="3%"><p align="center"></p></td>
+        <td  id="c20" width="3%"><p align="center"></p></td>
+        <td width="9%" valign="top"><p align="center"></p></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+
+    <table id="node" border="0">
+      <tr>
+        <td ><p id="addRow3">Добавить дополнительный модуль</p></td>
+      </tr>
+    </table>
+
+    <script>
+
+        (function(){
+            $('#table_3 tbody #item #module_number');
+            console.log($('#table_3 tbody #sum #c3'));
+
+
+        })();
+
+
+        function Calc_3(){
+            // console.log($('#table_3 #item #c30').type);
+            var Count=$('#table_3').data('count');
+            console.log(Count);
+            for (var i = Count.length - 1; i >= 0; i--) {
+                // Count[i]
+            };
+            // var x = document.getElementById('c30').value;
+
+            var x = $('#table_3 tbody #item #module_number');
+            console.log(x);
+
+        }
+
+
+
+
+
+        var AddingRow3 = $('#table_3 tbody>#item');
+
+        $('#addRow3').click(function(){
+            console.log(AddingRow3);
+            console.log($('#table_3 tbody>#item'));
+            AddingRow3.clone(true).insertAfter('#table_3 tbody>#item:last');
+
+
+            Calc_3();
+            // $('#table_3').attr('data-count', Count);
+
+
+
+        });
+
+
+    </script>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <h2>Таблица 4. Положение дисциплины в учебных  планах</h2>
+    <table border="1" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td width="45%" nowrap="nowrap" rowspan="2"><p align="center">Форма обучения</p></td>
+        <td width="54%" colspan="5"><p align="center">Распределение по семестрам</p></td>
+      </tr>
+      <tr>
+        <td width="10%"><p align="center">Курс</p></td>
+        <td width="9%"><p align="center">Се-местр</p></td>
+        <td width="11%"><p align="center">Курсо-вая работа (проект)</p></td>
+        <td width="10%"><p align="center">Конт-роль-ная работа для з/о</p></td>
+        <td width="10%"><p align="center">Форма проме-жуточ-ной аттес-тации</p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Очная, полный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center">
+
+          <select name="forma">
+            <option value="pt1" selected> </option>
+            <option value="pt2" >Э</option>
+            <option value="pt3">З</option>
+          </select>
+        </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Очная, второе высшее, сокращенный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Очная, на базе СПО,    сокращенный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Очно-заочная (вечерняя),    полный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Очно-заочная (вечерняя),    второе высшее, сокращенный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Очно-заочная (вечерняя),    на базе СПО, сокращенный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Заочная, полный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Заочная, второе высшее,    сокращенный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+      <tr>
+        <td width="45%" nowrap="nowrap" valign="bottom"><p>Заочная, на базе СПО,    сокращенный срок</p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="9%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="11%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="10%"><p align="center"><select name="forma">
+          <option value="pt1" selected> </option>
+          <option value="pt2" >Э</option>
+          <option value="pt3">З</option>
+
+        </select> </p></td>
+      </tr>
+    </table>
+    <h2>Таблица 5. Распределение часов по видам  нагрузки</h2>
+    <table border="1" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td width="20%" nowrap="nowrap" rowspan="2"><p align="center">Форма обучения</p></td>
+        <td width="71%" colspan="9"><p align="center">Трудоемкость по учебным планам по видам работ,    час</p></td>
+        <td width="7%" rowspan="2"><p align="center">ЗЕТ</p></td>
+      </tr>
+      <tr>
+        <td width="7%"><p align="center">Ауди-торных всего</p></td>
+        <td width="7%"><p align="center">Лекций</p></td>
+        <td width="7%"><p align="center">Практических и семинарских</p></td>
+        <td width="7%"><p align="center">Лабораторных</p></td>
+        <td width="7%"><p align="center">СРС</p></td>
+        <td width="7%"><p align="center">Переаттестовано</p></td>
+        <td width="7%"><p align="center">Изучено</p></td>
+        <td width="7%"><p align="center">Экзамен</p></td>
+        <td width="7%"><p align="center">Всего</p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Очная, полный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date>
+        </p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Очная, второе высшее,    сокращенный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Очная, на базе СПО,    сокращенный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Очно-заочная (вечерняя),    полный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Очно-заочная (вечерняя),    второе высшее, сокращенный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Очно-заочная (вечерняя),    на базе СПО, сокращенный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Заочная, полный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Заочная, второе высшее,    сокращенный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      </tr>
+      <tr>
+        <td width="20%" nowrap="nowrap" valign="bottom"><p>Заочная, на базе СПО,    сокращенный срок</p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date>
+        </p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="7%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+
+      </tr>
+    </table>
+    <p>Имеющиеся звезочки сделать!</p>
+    <p>&nbsp;</p>
+    <h2>Таблица 6. Детализированное описание содержания  модулей дисциплины</h2>
+    <table border="1" cellspacing="0" cellpadding="0" width="100%">
+    <tr>
+      <td width="6%" rowspan="3"><p align="center"><strong><em>Код занятия</em></strong></p></td>
+      <td width="14%" rowspan="3"><p align="center"><strong><em>Модуль 1 &quot; <textarea name=address4 rows=10 cols=13> </textarea>    &quot;</em></strong></p></td>
+      <td width="79%" colspan="18" valign="top"><p align="center">Трудоемкость по учебным планам для форм    обучения</p></td>
+    </tr>
+    <tr>
+      <td width="79%" colspan="2"><p align="center">Очная, полный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Очная, второе высшее, сокращенный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Очная, на базе СПО, сокращенный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Очно-заочная, полный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Очно-заочная, второе высшее, сокращенный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Очно-заочная, на базе СПО, сокращенный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Заочная, полный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Заочная, второе высшее, сокращенный срок</p></td>
+      <td width="8%" colspan="2"><p align="center">Заочная, на базе СПО, сокращенный срок</p></td>
+    </tr>
+    <tr>
+      <td width="79%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+      <td width="8%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+      <td width="8%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+      <td width="8%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+      <td width="8%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+      <td width="8%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+      <td width="8%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+      <td width="8%"><p align="center">часы</p></td>
+      <td width="4%"><p align="center">ЗЕТ</p></td>
+      <td width="8%" nowrap="nowrap"><p align="center">часы</p></td>
+      <td width="4%" nowrap="nowrap"><p align="center">ЗЕТ</p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><strong>&nbsp;</strong></p></td>
+      <td width="14%" valign="bottom"><p><strong>Лекции</strong></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><textarea name=address4 rows=1 cols=8>Л1.1 </textarea> </p></td>
+      <td width="14%" valign="bottom"><p> <textarea name=address4 rows=4 cols=17> </textarea>    </p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><strong>&nbsp;</strong></p></td>
+      <td width="14%" valign="bottom"><p><strong>Практические и семинарские    занятия</strong></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><textarea name=address4 rows=1 cols=8>П1.1</textarea></p></td>
+      <td width="14%" valign="bottom"><p> <textarea name=address4 rows=4 cols=17> </textarea></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><strong>&nbsp;</strong></p></td>
+      <td width="14%" valign="bottom"><p><strong>Лабораторные работы</strong></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><textarea name=address4 rows=1 cols=8></textarea></p></td>
+      <td width="14%" valign="bottom"><p><textarea name=address4 rows=4 cols=17> </textarea></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><strong>&nbsp;</strong></p></td>
+      <td width="14%" valign="bottom"><p><strong>Внеаудиторная самостоятельная работа студента</strong></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p>&nbsp;</p></td>
+      <td width="14%" valign="bottom"><p>Подготовка к лекциям</p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p>&nbsp;</p></td>
+      <td width="14%" valign="bottom"><p>Подготовка к практическим    и семинарским занятиям</p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p>&nbsp;</p></td>
+      <td width="14%" valign="bottom"><p>Подготовка к лабораторным    работам</p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p>&nbsp;</p></td>
+      <td width="14%" valign="bottom"><p>Подготовка к текущей    аттестации</p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p>&nbsp;</p></td>
+      <td width="14%" valign="bottom"><p>Выполнение домашнего    задания</p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><input type=text size=1 date=the_date></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><strong>&nbsp;</strong></p></td>
+      <td width="14%" valign="bottom"><p><strong>Переаттестовано</strong></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+    </tr>
+    <tr>
+      <td width="6%" valign="top"><p><strong>&nbsp;</strong></p></td>
+      <td width="14%" valign="bottom"><p><strong>ИТОГО по модулю</strong></p></td>
+      <td width="79%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="8%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+      <td width="4%" nowrap="nowrap"><p align="center"><strong><input type=text size=1 date=the_date></strong></p></td>
+
+    </tr>
+    </table>
+    <p><em>Коды занятий: Л1.2 – Лекция, посвященная второй теме и  входящая в первый модуль; П3.2 – Практическое занятие номер 3, входящее в третий  модуль; Р1.1 – Лабораторная работа номер один, входящая в первый модуль.</em></p>
+    <p>Создание такой таблицы по каждому модулю!</p>
+
+    <h2>Таблица 7. Описание применяемых технологий  обучения</h2>
+    <table border="1" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td width="38%"><p align="center">№ модуля</p></td>
+        <td width="5%"><p align="center">Код занятия</p></td>
+        <td width="28%"><p align="center">Тема занятия</p></td>
+        <td width="7%" valign="top"><p align="center">Объем занятий, час.</p></td>
+        <td width="53%"><p align="center">Применяемые активные и интерактивные технологии обучения</p></td>
+      </tr>
+      <tr>
+        <td width="38%"><p><input type=text size=1 date=the_date></p></td>
+        <td width="5%"><p><input type=text size=1 date=the_date></p></td>
+        <td width="28%"><p><textarea name=address4 rows=2 cols=30> </textarea></p></td>
+        <td width="7%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="53%"><p><textarea name=address4 rows=3 cols=60> </textarea></p></td>
+      </tr>
+      <tr>
+        <td width="38%"><p><input type=text size=1 date=the_date></p></td>
+        <td width="5%"><p><input type=text size=1 date=the_date></p></td>
+        <td width="28%"><p><textarea name=address4 rows=2 cols=30> </textarea></p></td>
+        <td width="7%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="53%"><textarea name=address4 rows=3 cols=60> </textarea></td>
+      </tr>
+      <tr>
+        <td width="38%"><p><input type=text size=1 date=the_date></p></td>
+        <td width="5%"><p><input type=text size=1 date=the_date></p></td>
+        <td width="28%"><p><textarea name=address4 rows=2 cols=30> </textarea></p></td>
+        <td width="7%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="53%"><textarea name=address4 rows=3 cols=60> </textarea></td>
+      </tr>
+      <tr>
+        <td width="38%" colspan="3"><p>ИТОГО </p></td>
+        <td width="7%"><p align="center"><input type=text size=1 date=the_date></p></td>
+        <td width="53%"><p>&nbsp;</p></td>
+      </tr>
+    </table>
+    <p>Общий процент занятий, проводимых в  активной и интерактивной форме от суммарной аудиторной нагрузки для очной формы  обучения по дисциплине <strong><input type=text size=1 date=the_date></strong></p>
+
+    <table id="node2" border="0">
+      <tr>
+        <td><button id="addRow2">Добавить строку</button></td>
+      </tr>
+    </table>
+    <h2>Учебно-методическое обеспечение дисциплины</h2>
+    <h3>Учебная литература (основная)</h3>
+
+    <textarea name=address2 rows=15 cols=112>Составляется на основании электронного каталога ВятГУ </textarea>
+
+    <h3>Учебная литература (для углубленного  изучения)</h3>
+    <textarea name=address2 rows=15 cols=112></textarea>
+    <p>&nbsp;</p>
+    <h3>Учебно-методические издания </h3>
+    <textarea name=address2 rows=15 cols=112></textarea>
+
+    </div>
+    <!--закончилась форма 3-->
+
+    <!-- ниже - работающий скрипт. открывает-закрывает форму -->
+
+    <script type="text/javascript">
+        (function(){
+//            $('div').filter('#form').addClass('hide');
+            $('div').filter('#form_name').toggle(
+                    function(){
+                        $(this).next().slideDown(1000);
+                    },
+                    function(){
+                        $(this).next().slideUp(800);
+                    }
+            );
+
+
+
+
+
+
+
+
+
+        })();
+    </script>
+
+    <!-- скрипт ниже - рабочий -->
+
+    <!--
+       <script>
+           (function() {
+               $('div').filter('#form').addClass('hide');
+               $('div').filter('#form_name').on('click',  function() {
+                   $(this)
+                           .next()
+                           .fadeIn(600)
+                           .siblings('#form')
+                           .hide(300);
+               });
+           })();
+       </script>
+
+    -->
+
+
+
+
+
+    <div class="actions">
+      <%= f.submit "Обновить рабочую программу"%>
+
+    </div>
+<% end %>

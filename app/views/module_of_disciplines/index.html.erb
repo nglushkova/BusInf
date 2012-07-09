@@ -1,21 +1,26 @@
-<h1>Listing module_of_disciplines</h1>
+<h1>Список модулей по всем дисциплинам</h1>
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Дисциплина</th>
+    <th width="7%">Номер модуля в дисциплине</th>
+    <th>Название модуля</th>
+    <th width="7%">Количество часов</th>
   </tr>
 
-<% @module_of_disciplines.each do |module_of_discipline| %>
-  <tr>
-    <td><%= link_to 'Show', module_of_discipline %></td>
-    <td><%= link_to 'Edit', edit_module_of_discipline_path(module_of_discipline) %></td>
-    <td><%= link_to 'Destroy', module_of_discipline, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  <% @module_of_disciplines.each do |module_of_discipline| %>
+      <tr>
+        <td><%= link_to module_of_discipline.discipline.disc_name, module_of_discipline.discipline %></td>
+        <td align="center"><%= module_of_discipline.mod_number %></td>
+        <td><%= module_of_discipline.mod_name %> </td>
+        <td align="center"><%= module_of_discipline.mod_numberofhours %></td>
+        <td><%= link_to 'Показать', module_of_discipline %></td>
+        <td><%= link_to 'Редактировать', edit_module_of_discipline_path(module_of_discipline) %></td>
+        <td><%= link_to 'Удалить', module_of_discipline, confirm: 'Вы уверены?', method: :delete %></td>
+      </tr>
+  <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Module of discipline', new_module_of_discipline_path %>
+<%= link_to 'Добавить модуль дисциплины', new_module_of_discipline_path %>

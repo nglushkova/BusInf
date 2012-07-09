@@ -1,17 +1,52 @@
+<br />
 <%= form_for(@module_of_discipline) do |f| %>
-  <% if @module_of_discipline.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@module_of_discipline.errors.count, "error") %> prohibited this module_of_discipline from being saved:</h2>
+    <% if @module_of_discipline.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@module_of_discipline.errors.count, "error") %> prohibited this module_of_discipline from being saved:</h2>
 
-      <ul>
-      <% @module_of_discipline.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @module_of_discipline.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div>
+      <%= f.label "Номер модуля в дисциплине" %>
+      <%= f.text_field :mod_number%>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <br/>
+
+    <div>
+      <%= f.label "Дисциплина" %>
+      <%= f.select :discipline_id, Discipline.all.collect {|d| [d.disc_name, d.id]}, {:include_blank => 'Выберите дисциплину'}, {:class => "field"}
+      %>
+    </div>
+
+    <br/>
+
+    <div>
+      <%= f.label "Название модуля" %>
+
+      <%= f.text_field :mod_name%>
+    </div>
+    <br/>
+
+
+
+
+    <div>
+      <%= f.label "Количество часов на освоение модуля" %>
+      <%= f.text_field :mod_numberofhours%>
+    </div>
+
+    <br/>
+
+
+
+    <div class="actions">
+      <%= f.submit "Сохранить модуль" %>
+    </div>
 <% end %>

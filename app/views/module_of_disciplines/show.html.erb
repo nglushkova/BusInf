@@ -1,5 +1,49 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+  модуль <strong>"<%= @module_of_discipline.mod_name %>" </strong>
+</p>
 
 
-<%= link_to 'Edit', edit_module_of_discipline_path(@module_of_discipline) %> |
-<%= link_to 'Back', module_of_disciplines_path %>
+
+
+
+<p>включен в дисциплину <i> <%= link_to @module_of_discipline.discipline.disc_name, discipline_path(@module_of_discipline.discipline) %></i></p>
+
+<br/>
+<p>Номер в дисциплине: <%= @module_of_discipline.mod_number %></p>
+<br/>
+<p>Количество часов на освоение: <%= @module_of_discipline.mod_numberofhours %></p><br/>
+<br/>
+
+<hr align="center"  noshade="true">
+<p>Темы, составляющие модуль:</p>
+<table>
+  <tr>
+    <th></th>
+    <th>Тема</th>
+    <th>Количество часов</th>
+  </tr>
+  <%
+     them=@module_of_discipline.themes.all()
+     them.each do |theme| %>
+      <tr>
+        <td width="3%"><%= theme.theme_inmodule %>) </td>
+        <td width="71%"><%= link_to theme.theme_name, theme %></td>
+        <td  align="center" width="23%"><%= theme.theme_numberofhour %> </td>
+        <td width="3%" class="field" bgcolor="#f08080"><%= link_to '|X|', theme, confirm: 'Удалить тему полностью?', method: :delete %></td>
+
+      </tr>
+  <%end %>
+
+  <tr>
+    <td bgcolor="#add8e6" class="field"><%= link_to '|+|', new_theme_path  %></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<br/>
+
+<hr align="center"  noshade="true">
+
+<%= link_to 'Редактировать', edit_module_of_discipline_path(@module_of_discipline) %> |
+<%= link_to 'К общему списку модулей', module_of_disciplines_path %>

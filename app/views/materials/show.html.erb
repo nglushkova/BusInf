@@ -1,5 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Edit', edit_material_path(@material) %> |
-<%= link_to 'Back', materials_path %>
+
+
+
+<% if @material.mfile.path.nil? then %>
+    <p>Файлы не загружены </p>
+
+<% else %>
+    <p><strong><i><%= @material.file_name %></i></strong>
+      (имя файла: <%= @material.mfile_file_name %>, ссылка <%= link_to @material.mfile.url,  @material.mfile.path() %> )</p>
+
+<% end %>
+
+
+<% if @material.mfile_content_type=='image/jpeg' then %>
+    <%=  image_tag  @material.mfile , {:width => "500px", :alt =>  @material.mfile_file_name  }  %>
+<% end %>
+
+</br>  </br>
+
+<%= link_to 'Редактировать', edit_material_path(@material) %> |
+<%= link_to 'К списку материалов', materials_path %>

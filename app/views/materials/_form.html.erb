@@ -11,7 +11,32 @@
         </div>
     <% end %>
 
+
+
+
+
+
+    <p>
+      <%= f.label :mfile, 'Учебный материал' %>
+      <%= f.file_field :mfile %>
+    </p>
+
+    <p>
+      <%= f.label  :file_name, 'Вы можете вписать имя файла, которое будет отображаться в системе' %>
+      <%= f.text_field :file_name %>
+    </p>
+
+
+    <%= f.select :file_type, ['Рабочая программа' ,'Методическое пособие' ,'Прочее'  ], {:include_blank => 'Выберите тип материала'}, {:class => "field"} %>
+
+
+    <p>
+      <%= f.label 'Выберите дисциплину' %>
+      <%= f.select :file_number, Discipline.all.collect {|d| [d.disc_name, d.id]}, {:include_blank => 'Выберите дисциплину'}, {:class => "field"} %>
+    </p>
+
+
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Сохранить"%>
     </div>
 <% end %>

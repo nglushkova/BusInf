@@ -1,4 +1,4 @@
-<h1>Список преподаваемых дисциплин (направление подготовки ... )</h1>
+<h1>Список преподаваемых дисциплин</h1>
 <p id="notice"><%= notice %></p><br/>
 
 
@@ -12,7 +12,7 @@
   <% @disciplines.each do |discipline| %>
       <tr>
         <td><%= discipline.disc_name %></td>
-        <td><%= discipline.disc_semester %></td>
+        <td align="center"><%= discipline.disc_semester %></td>
         <td><%= link_to 'Подробное описание', discipline %></td>
         <td><%= link_to 'Редактировать', edit_discipline_path(discipline) %></td>
         <td><%= link_to 'Удалить', discipline, confirm: 'Вы уверены?', method: :delete %></td>

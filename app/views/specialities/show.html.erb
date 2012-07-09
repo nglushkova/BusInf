@@ -2,79 +2,67 @@
 
 <h1><%= @speciality.spec_name %> (<%= @speciality.spec_redaction %>)</h1> <br/>
 
-<p><%= @speciality.spec_description %><%= @speciality.spec_description2 %></p><br/>
+
 <h2>Вступительные экзамены:</h2>
 <p><%= @speciality.spec_exams %></p><br/>
 <p></p><br/>
 
+<p><%= @speciality.spec_description %></p><br/>
+<ol>
+
+  <%
+     dis=@speciality.disciplines.all(  :order => 'disc_semester ASC')
+     dis.each do |discipline|
+       foc= discipline.formation_of_competences.all()
+       foc.each do |formation|
+         if formation.foc_type.nil? %>
+          <% else %>
+              <li><%=  formation.competence.comp_name %>  <%= link_to ' (подробнее...)', formation.competence %></li>
+          <%end %>
+      <%end %>
+  <%end %>
+</ol>
+
+
+
+
 <br/>
 <h2>Преподаваемые дисциплины: </h2>
-
 <br/>
+
+<% semester=0
+  loop do
+    semester+=1     %>
+
+
+    <h3> <%= semester %> семестр:</h3>
+                    <%
+    dis=@speciality.disciplines.all( :order => 'disc_semester ASC')
+    dis.each do |discipline|
+      if discipline.disc_semester==semester %>
+            <dd>
+              <dl><%= discipline.disc_name %> <%= link_to ' >>', discipline , {:target => "_blank"} %></dl>
+            </dd>
+
+        <%end %>
+    <%end %>
+
+    </br>
+    <%
+
+
+    next if semester==5
+    print "#{semester} "
+    break if semester==10
+  end     %>
+
+
 
 <table>
   <tr>
-    <th>1 семестр:</th>
+    <br/>
+    <%= link_to 'К списку направлений подготовки', specialities_path %> |
+    <%= link_to 'Редактировать', edit_speciality_path(@speciality) %>
+
   </tr>
-<% sp_id= @speciality.id
-   #
-   #dis=Discipline.find(:conditions => specialty_id = sp_id )
-   #dis=Discipline.find(:conditions => semester = '10')
-   dis=Discipline.all(:conditions =>  speciality_id = sp_id , :order => 'disc_semester ASC')
-   #dis =  Discipline.find_by_sql("SELECT disciplines.disc_name AS disc  FROM disciplines INNER JOIN specialities ON disciplines.specialty_id=specialities.id  WHERE (disciplines.disc_course=10)AND (discipline.specialty_id="+@speciality.id+")  ")
-   dis.each do |discipline| %>
-    <tr>
-      <td><%= discipline.disc_name %></td>
-      <td><%= discipline.disc_semester %></td>
-      <td><%= link_to 'Подробнее...', discipline %></td>
-
-    </tr>
-<% end %>
-</table>
-<br/>
-
-<table>
-  <tr>
-    <th>2 семестр:</th>
-  </tr>
-  <% sp_id= @speciality.id
-     #
-     #dis=Discipline.find(:conditions => specialty_id = sp_id )
-     #dis=Discipline.find(:conditions => semester = '10')
-     dis=Discipline.all(:conditions =>  specialty_id = sp_id     ,
-                        :order => 'disc_semester ASC')
-
-     dis.each do |dis| %>
-      <tr>
-        <td><%= dis.disc_name %></td>
-        <td><%= dis.disc_semester %></td>
-        <td><%= link_to 'Подробнее...', dis %></td>
-       </tr>
-  <% end %>
-</table>
-<br/>
-
-<table>
-  <tr>
-    <th>10 семестр:</th>
-  </tr>
-  <% dis=@speciality.disciplines.all()
-    dis.each do |discipline| %>
-      <% if (discipline.disc_semester=="10")%>
-            <tr>
-            <td width="10%"><%= discipline.disc_name %> |</td>
-            <td><%= link_to 'Подробнее...', discipline %></td>
-          </tr>
-      <% end %>
-  <%end %>
-</table>
-<br/>
-
-
-<table>
-<tr>
-<br/>
-<%= link_to 'Редактировать', edit_speciality_path(@speciality) %> |
-<%= link_to 'К списку направлений подготовки', specialities_path %>
-</tr>
 </table>

@@ -1,5 +1,14 @@
-<h1>New theme</h1>
+<p id="notice">
+  <%= notice %>
+  тема <strong>"<%= @theme.theme_name %>" </strong>
+</p>
+<br/>
 
-<%= render 'form' %>
+<p>Входит в модуль <i> <%= link_to @theme.module_of_discipline.mod_name, module_of_discipline_path(@theme.module_of_discipline) %>    </i>
+  дисциплины  <i><%= link_to @theme.discipline.disc_name, discipline_path(@theme.discipline) %></i></p>
+<br/>
 
-<%= link_to 'Back', themes_path %>
+
+
+<%= link_to 'Редактировать', edit_theme_path(@theme) %> |
+<%= link_to 'К общему списку тем', themes_path %>

@@ -1,70 +1,173 @@
-<h1>Сведения о дисциплине "<%= @discipline.disc_name %>"</h1>
+<h1><%= @discipline.disc_name %></h1>
 <p  id="notice"><%= notice %></p>
 
 
 
-<p>Специальность: <%= @spec=Speciality.find(@discipline.speciality_id).spec_name %>  </p><br/>
+<h2 align="center"><i>Сведения о дисциплине:</i></h2>
+
+<p>Специальность: <%= link_to @spec=Speciality.find(@discipline.speciality_id).spec_name, speciality_path(id=@discipline.speciality_id)  %>  </p><br/>
 
 
 <p>Курс: <%= @discipline.disc_course %></p><br/>
+<p>Семестр: <%= @discipline.disc_semester %></p><br/>
 
-<p>Цикл дисциплин: <%= @discipline.disc_cycle %></p><br/>
-<p>Подцикл дисциплин: <%= @discipline.disc_partofcycle %></p><br/>
+<% if @discipline.disc_cycle.nil? %>
+<% else %>
+    <p>Цикл дисциплин: <%= @discipline.disc_cycle %></p><br/>
+<% end %>
+
+<% if @discipline.disc_partofcycle.nil? %>
+<% else %>
+    <p>Подцикл дисциплин: <%= @discipline.disc_partofcycle %></p><br/>
+<% end %>
+
+<% if @discipline.disc_partofcycle.nil? %>
+<% else %>
+    <p>Цель курса: <%= @discipline.disc_objective %></p><br/>
+<% end %>
+
+<% if @discipline.disc_partofcycle.nil? %>
+<% else %>
+    <p>Задачи курса: <%= @discipline.disc_tasks %></p><br/>
+<% end %>
 
 
-<p>Цель курса: <%= @discipline.disc_objective %></p><br/>
-<p>Задачи курса: <%= @discipline.disc_tasks %></p><br/>
+
+<hr align="center"  noshade="true">
+
+<div align="left" >
+  <h2 align="center"><i>Формирование компетенций:       </i></h2>
 
 
-<div align="left">
-  Компетенции, необходимые для изучения дисциплины:
+  <strong><i>Компетенции, требуемые</i></strong> для освоения дисциплины:
+  <br>
+  <table >
+    <tr>
+      <th></th>
+      <th>Содержание компетенции</th>
+      <th>Знания</th>
+      <th>Умения</th>
+      <th>Навыки</th>
+    </tr>
+    <% foc=@discipline.formation_of_competences.all()
 
+       foc.each do |formation_of_competence| %>
+        <% if (formation_of_competence.foc_type?)%>
+            <tr>
+              <td width="6%" align="right"><%= link_to formation_of_competence.competence.comp_group,formation_of_competence %> :</td>
+              <td width="43%"><%=formation_of_competence.competence.comp_name %></td>
+              <td width="15%" align="left"><%= formation_of_competence.foc_knowledge %></td>
+              <td width="15%" align="left"><%= formation_of_competence.foc_ability %></td>
+              <td width="15%" align="left"><%= formation_of_competence.foc_skills %></td>
+              <% if current_user.user_status == "teacher" %>
+              <td width="6%" class="field" bgcolor="#f08080" align="center"><%= link_to '[X]', formation_of_competence, confirm: 'Удалить запись о формировании компетенции полностью?', method: :delete %></td>
+              <%end %>
+              </tr>
+        <% end %>
 
-<table>
-  <% foc=@discipline.formation_of_competences.all(:conditions => foc_type='true')
-
-     foc.each do |formation_of_competence| %>
-      <% if (formation_of_competence.foc_type?)%>
-          <tr>
-            <td width="10%"><%=formation_of_competence.competence.comp_group %> |</td>
-            <td width="60%"><%=formation_of_competence.competence.comp_name %></td>
-            <td><%= link_to 'Подробнее...',formation_of_competence.competence %></td>
-          </tr>
-          <% end %>
-
-  <%end %>
-</table>
-<br/>
+    <%end %>
+    <tr>
+      <% if current_user.user_status == "teacher" %>
+      <td bgcolor="#add8e6" class="field" align="center"><%= link_to '[+]', new_formation_of_competence_path  %></td>
+      <%end %>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <br/>
 </div>
 
 
 <div align="left">
-  Компетенции, формируемые в процессе изучения дисциплины:
-
-
-<table>
-  <% foc=@discipline.formation_of_competences.all()
-
-     foc.each do |formation_of_competence| %>
-      <% if (formation_of_competence.foc_type?)%>
-          <% else %>
-          <tr>
-            <td width="10%"><%= formation_of_competence.competence.comp_group %> |</td>
-            <td width="60%"><%= formation_of_competence.competence.comp_name %></td>
-            <td><%= link_to 'Подробнее...',formation_of_competence.competence %></td>
-      </tr>
-      <% end %>
-  <%end %>
-</table>
-<br/>
+  <strong><i>Компетенции, формируемые</i></strong> в процессе изучения дисциплины:
+  <table>
+    <tr>
+      <th></th>
+      <th>Содержание компетенции</th>
+      <th>Знания</th>
+      <th>Умения</th>
+      <th>Навыки</th>
+    </tr>
+    <% foc=@discipline.formation_of_competences.all()
+       foc.each do |formation_of_competence| %>
+        <% if (formation_of_competence.foc_type?)%>
+        <% else %>
+            <tr>
+              <td width="6%" align="right"><%= link_to formation_of_competence.competence.comp_group,formation_of_competence.competence %> :</td>
+              <td width="43%"><%= formation_of_competence.competence.comp_name %></td>
+              <td width="15%" align="left"><%= formation_of_competence.foc_knowledge %></td>
+              <td width="15%" align="left"><%= formation_of_competence.foc_ability %></td>
+              <td width="15%" align="left"><%= formation_of_competence.foc_skills %></td>
+              <% if current_user.user_status == "teacher" %>
+              <td width="6%" class="field" bgcolor="#f08080" align="center"><%= link_to '[X]', formation_of_competence, confirm: 'Удалить запись о формировании компетенции полностью?', method: :delete %></td>
+              <% end %>
+             </tr>
+        <% end %>
+    <%end %>
+    <tr>
+      <% if current_user.user_status == "teacher" %>
+      <td bgcolor="#add8e6" class="field" align="center"><%= link_to '[+]', new_formation_of_competence_path  %></td>
+      <%end %>
+          <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <br/>
 </div>
 
+<hr align="center"  noshade="true">
 
 
 
 
-<h2>Действия:</h2>
-<%= link_to 'Загрузить рабочую программу', edit_discipline_path(@discipline) %> |
-<%= link_to 'Скачать рабочую программу', edit_discipline_path(@discipline) %> |
-<%= link_to 'Редактировать рабочую программу', edit_discipline_path(@discipline) %> |
-<%= link_to 'К списку дисциплин', disciplines_path %>
+<h2 align="center"><i>Тематические модули дисциплины:</i></h2>
+<table width="80%">
+  <!--<tr>-->
+  <!--<th></th>-->
+  <!--<th>Модуль</th>-->
+  <!--<th>Количество часов</th>-->
+  <!--</tr>-->
+  <%
+     mod=@discipline.module_of_disciplines.all()
+     mod.each do |module_of_discipline| %>
+      <tr>
+        <td width="6%" align="right"><%= module_of_discipline.mod_number %>) </td>
+        <td width="70%"><%= link_to module_of_discipline.mod_name, module_of_discipline %></td>
+        <td width="18%" align="center"><%= module_of_discipline.mod_numberofhours %> часов </td>
+        <% if current_user.user_status == "teacher" %>
+        <td width="6%" class="field" bgcolor="#f08080" align="center"><%= link_to '[X]', module_of_discipline, confirm: 'Удалить модуль полностью?', method: :delete %></td>
+        <%end %>
+        </tr>
+  <%end %>
+  <tr>
+    <% if current_user.user_status == "teacher" %>
+    <td bgcolor="#add8e6" class="field" width="5%" align="center"><%= link_to '[+]', new_module_of_discipline_path %></td>
+    <%end %>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<br/>
+
+<hr align="center"  noshade="true">
+<h2 align="center"><i>Учебные и методические материалы:       </i></h2>
+<ul>
+  <li>Рабочая программа по дисциплине <%= link_to '(скачать)', materials_path %> </li>
+  <li>Методические рекомендации к практическим занятиям <%= link_to '(скачать)', materials_path %> </li>
+
+
+</ul>
+<br />
+
+<hr align="center"  noshade="true">
+<%= link_to 'Бланк рабочей программы (в новом окне)', @discipline , {:target => "_blank"}%> |
+<%= link_to 'Загрузить учебные и методические материалы', materials_path %> <br />
+
+<%= link_to 'Редактировать сведения о дисциплине', edit_discipline_path(@discipline) %> |
+<%= link_to 'Удалить дисциплину', @discipline, confirm: 'Вы уверены?', method: :delete %> <br />
+<%= link_to 'К общему списку дисциплин', disciplines_path %>
