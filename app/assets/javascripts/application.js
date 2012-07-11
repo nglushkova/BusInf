@@ -16,9 +16,9 @@
 $(function(){
 
     $('ul.tabs').delegate('li:not(.current)', 'click', function() {
-		$(this).addClass('current').siblings().removeClass('current')
-			.parents('div.section').find('div.box').hide().eq($(this).index()).fadeIn(150);
-	});
+        $(this).addClass('current').siblings().removeClass('current')
+            .parents('div.section').find('div.box').hide().eq($(this).index()).fadeIn(150);
+    });
 
     $("#butday").click(function(){
         $("#sched_two_week:visible").hide(5);
@@ -41,7 +41,7 @@ $(function(){
         $("#butday").css("border-color", "#207DB0");
         $("#main").css("height", "850px");
         return false;
-     });
+    });
     $("#event_ev_date").datepicker({
         dayNames: ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
         dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
@@ -63,7 +63,7 @@ $(function(){
         prevText: '<<',
         showOtherMonths: true,
         selectOtherMonths: true,
-        dateFormat: 'DD dd.mm.yy',
+        dateFormat: 'dd.mm.yy (DD)',
         onSelect: function(dateText) {
             $("#date:hidden").show(5);
             $("#sched_two_week:visible").hide(5);
@@ -107,8 +107,6 @@ $(function(){
     });
 
 
-
-
     (function(){
 //        здесь можно написать скрит, который бдет выполняться сразу после загрузки страницы
     })  ()  ;
@@ -117,5 +115,5 @@ $(function(){
         var AddingRow1 = $('#table_1 tbody>#item').first();
         console.log($('#table_1 tbody>#item'));
         AddingRow1.clone(true).insertAfter('#table_1 tbody>#item:last');
-      });
+    });
 });

@@ -9,18 +9,18 @@
     <th>Дата рождения</th>
   </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.user_surname %></td>
-    <td><%= user.user_name %></td>
-    <td><%= user.user_secondname %></td>
-    <td><%= user.user_status %></td>
-    <td><%= user.user_birthday %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.user_surname %></td>
+        <td><%= user.user_name %></td>
+        <td><%= user.user_secondname %></td>
+        <td><%= user.user_status %></td>
+        <td><%= user.user_birthday %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+  <% end %>
 </table>
 
 <br />

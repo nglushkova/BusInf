@@ -1,3 +1,4 @@
+# encoding: utf-8
 class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
@@ -40,15 +41,43 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
-
+    @message = Message.new(params[:author])
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render json: @message, status: :created, location: @message }
+        format.html do
+          flash[:notice] = 'Сообщение успешно отправлено.'
+          if params[:back]
+            redirect_to params[:back]
+          else
+            redirect_to message_url(@message)
+          end
+        end
+        format.js do
+          render :update do |page|
+            page.form.reset 'message_form'
+            page << "$('new_message_popup').popup.hide();"
+            page.visual_effect :highlight, 'new_message'
+            page.replace_html 'message_popup_message', 'Сообщение отправлено'
+            page << "$('message_popup').popup.show();"
+          end
+        end
+        format.xml  { head :created, :location => message_url(@message) }
       else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+        format.html do
+          if params[:back]
+            flash[:notice] = 'При отправлении произошел сбой.'
+            redirect_to params[:back]
+          else
+            render :action => 'new'
+          end
+        end
+        format.js do
+          render :update do |page|
+            page.replace_html 'message_popup_message', 'An error occurred.'
+            page << "$('message_popup').popup.show();"
+          end
+        end
+        format.xml  { render :xml => @message.errors.to_xml }
       end
     end
   end

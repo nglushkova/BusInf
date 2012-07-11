@@ -1,5 +1,5 @@
 <div style="min-height: 700px;">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
   <div class="panelleft">
     <div id="datepicker"></div><br/>
     <div class="coming_events">
@@ -29,35 +29,137 @@
   <div class="panelright">
     <h1 style="padding-left: 20px; margin-bottom: 20px;">Сообщения</h1>
     <div class="section">
-	<ul class="tabs">
-		<li class="current">Полученные</li>
-		<li>Отправленные</li>
-      <li class="write_message"><a href="">Написать сообщение</a></li>
-	</ul>
-	<div class="box visible">
-	<table>
-	<tr class="mes_tr">
-	<td class="mes_author"><p>Кузьминых Михаил Михайлович</p>
-	<p style="font-size: 70%">14.05.2012 12:27</p></td>
-	<td width="60%" class="message">Как продвигается работа над дипломным проектом?</td>
-	<td class="mes_option"><a href="">Ответить</a></td>
-	<td class="mes_option"><a href="">Удалить</a></td>
-	</tr>
-	</table>
-	</div>
+      <ul class="tabs" style="display: inline-block;">
+        <li class="current">Полученные</li>
+        <li>Отправленные</li>
+      </ul>
+      <li style="display: inline; float: right; font-size: 90%;"><span id="new_message_link" class="popup_link">Написать сообщение</span></li>
+      <%= render :partial => 'messages/new' %>
+      <%= render :partial => 'shared/message_popup' %>
 
-<div class="box">
-<table>
-	<tr class="mes_tr">
-	<td class="mes_author"><p>Кузьминых Михаил Михайлович</p>
-	<p style="font-size: 70%">14.06.2012 22:27</p></td>
-	<td width="65%" class="message">там приведена форма для отметки посещаемости студентов</td>
-	<td class="mes_option"><a href="">Удалить</a></td>
-	</tr>
-	</table>
-	</div>
-  </div>
 
+
+      <div class="box visible">
+        <table>
+          <% @message_input = mes_input(current_user.id, current_user.group_id) %>
+          <% if @message_input.nil? %>
+              <tr><p align="center" style="padding: 10px;">Сообщений нет</p></tr>
+          <% else %>
+              <% @message_input.each do |mi| %>
+                  <tr class="mes_tr">
+                    <td class="mes_author">
+                      <p>
+                        <% if mi.status == "teacher" %>
+                            <%= mi.surname + " " + mi.name + " " + mi.secondname %>
+                        <% else %>
+                            <% if mi.status == "student" %>
+                                <%= mi.surname + " " + mi.name %>
+                            <% end %>
+                        <% end %>
+                      </p>
+                      <p style="font-size: 70%">
+                        <% if ((mi.created_at.day == Date.today.day) && (mi.created_at.month == Date.today.month) && (mi.created_at.year == Date.today.year)) %>
+                            Сегодня <%= Russian::strftime(mi.created_at, "%H:%M") %>
+                        <% else %>
+                            <%= Russian::strftime(mi.created_at, "%d.%m.%Y %H:%M")%>
+                        <% end %>
+                      </p>
+                    </td>
+                    <td width="60%" class="message"><p><b><%= mi.mes_theme %></b></p>
+                      <p>
+                        <% if (mi.mes_text).size < 150 %>
+                            <%= mi.mes_text %>
+                        <% else %>
+                            <%= mi.mes_text[0..150]+ "..." %>
+                        <% end %>
+                      </p>
+                    </td>
+                    <td class="mes_option"><a href="">Ответить</a></td>
+                    <td class="mes_option"><%= link_to 'Удалить', mi, method: :delete %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </div>
+
+      <div class="box">
+        <table>
+          <% @message_output = mes_output(current_user.id) %>
+          <% if @message_output.nil? %>
+              <tr><p align="center" style="padding: 10px;">Сообщений нет</p></tr>
+          <% else %>
+              <% @message_output.each do |mo| %>
+                  <tr class="mes_tr">
+                    <td class="mes_author">
+                      <p>
+                        <% if mo.status == "teacher" %>
+                            <%= mo.surname + " " + mo.name + " " + mo.secondname %>
+                        <% else %>
+                            <% if mo.status == "student" %>
+                                <%= mo.surname + " " + mo.name %>
+                            <% end %>
+                        <% end %>
+                      </p>
+                      <p style="font-size: 70%">
+                        <%= Russian::strftime(mo.created_at, "%d.%m.%Y %H:%M") %>
+                      </p>
+                    </td>
+                    <td width="65%" class="message"><p><b><%= mo.mes_theme %></b></p>
+                      <p>
+                        <% if mo.mes_text.size < 150 %>
+                            <%= mo.mes_text %>
+                        <% else %>
+                            <%= mo.mes_text[0..150] + "..." %>
+                        <% end %>
+                      </p>
+                    </td>
+                    <td class="mes_option"><a href="">Удалить</a></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </div>
+
+      <div class="box">
+        <% @message = Message.new %>
+        <%= render "messages/form" %>
+        <table>
+          <% @message_output = mes_output(current_user.id) %>
+          <% if @message_output.nil? %>
+              <tr><p align="center" style="padding: 10px;">Сообщений нет</p></tr>
+          <% else %>
+              <% @message_output.each do |mo| %>
+                  <tr class="mes_tr">
+                    <td class="mes_author">
+                      <p>
+                        <% if mo.status == "teacher" %>
+                            <%= mo.surname + " " + mo.name + " " + mo.secondname %>
+                        <% else %>
+                            <% if mo.status == "student" %>
+                                <%= mo.surname + " " + mo.name %>
+                            <% end %>
+                        <% end %>
+                      </p>
+                      <p style="font-size: 70%">
+                        <%= Russian::strftime(mo.created_at, "%d.%m.%Y %H:%M") %>
+                      </p>
+                    </td>
+                    <td width="65%" class="message"><p><b><%= mo.mes_theme %></b></p>
+                      <p>
+                        <% if mo.mes_text.size < 150 %>
+                            <%= mo.mes_text %>
+                        <% else %>
+                            <%= mo.mes_text[0..150] + "..." %>
+                        <% end %>
+                      </p>
+                    </td>
+                    <td class="mes_option"><a href="">Удалить</a></td>
+                  </tr>
+              <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 

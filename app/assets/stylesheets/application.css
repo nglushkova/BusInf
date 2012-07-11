@@ -132,7 +132,7 @@ ul#menu{
 #menu .select a b, #menu .current a b, #menu .select a .selected{
     height: 100%;
     display: block;
-   /* background: url("nav.png") no-repeat right top;*/
+    /* background: url("nav.png") no-repeat right top;*/
     padding: 0 20px 0 15px;
     color: #606060;
 }
@@ -218,33 +218,33 @@ ul#menu{
 }
 
 #error_explanation {
-  width: 400px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 }
 
 #error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
 }
 
 #error_explanation p {
-  color: #333;
-  margin-bottom: 5%;
-  padding: 5px;
+    color: #333;
+    margin-bottom: 5%;
+    padding: 5px;
 }
 
 #error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
+    font-size: 12px;
+    list-style: square;
 }
 .panelstudent, .panelteacher{
     position: absolute;
@@ -281,7 +281,7 @@ ul#menu{
     text-align: center;
     padding: 0 20px 0;}
 .calls p{
-   margin: 0 10% 0;
+    margin: 0 10% 0;
 }
 .panelright{
     width: 69.5%;
@@ -292,36 +292,36 @@ ul#menu{
 
 /* tables */
 #schedule {
-	font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-	background-color: #f0f0f0;
-	margin: 5%;
-	font-size: 8pt;
-	width: 90%;
-	text-align: left;
+    font: 100% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 5%;
+    font-size: 8pt;
+    width: 90%;
+    text-align: left;
     border-spacing: 0;
     border: 4px double #111;
     border-collapse: collapse;
 }
 #schedule thead tr th{
-	background-color: #e6EEEE;
-	border: 1px solid #111;
-	font-size: 8pt;
-	padding: 4px;
+    background-color: #e6EEEE;
+    border: 1px solid #111;
+    font-size: 8pt;
+    padding: 4px;
     text-align: center;
     font-size: 115%;
 }
 #schedule tbody td {
-	color: #3D3D3D;
-	padding: 4px;
-	background-color: #FFF;
-	vertical-align: top;
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
     font-size: 110%;
 }
 table.tablesorter tbody tr.odd td {
-	background-color:#F0F0F6;
+    background-color:#F0F0F6;
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-background-color: #8dbdd8;
+    background-color: #8dbdd8;
 }
 .field_group{
     visibility: hidden;
@@ -409,44 +409,44 @@ background-color: #8dbdd8;
 }
 
 ul.tabs {
-	height: 28px;
-	line-height: 25px;
-	list-style: none;
-	border-bottom: 1px solid #DDD;
-	background: #FFF;
+    height: 28px;
+    line-height: 25px;
+    list-style: none;
+    border-bottom: 1px solid #DDD;
+    background: #FFF;
 }
 .tabs li {
-	float: left;
-	display: inline;
-	margin: 0 0 0 0;
-	padding: 2px 10px 0 10px;
-	color: #777;
-	cursor: pointer;
-	background: #F9F9F9;
-	border: 1px solid #E4E4E4;
-	border-bottom: 1px solid #F9F9F9;
-	position: relative;
+    float: left;
+    display: inline;
+    margin: 0 0 0 0;
+    padding: 2px 10px 0 10px;
+    color: #777;
+    cursor: pointer;
+    background: #F9F9F9;
+    border: 1px solid #E4E4E4;
+    border-bottom: 1px solid #F9F9F9;
+    position: relative;
 }
 .tabs li:hover, .tabs li:hover {
-	color: #F70;
-	background: #FFFFDF;
-	border: 1px solid #FFCA95;
+    color: #F70;
+    background: #FFFFDF;
+    border: 1px solid #FFCA95;
 }
 .tabs li.current {
-	color: #444;
-	background: #EFEFEF;
-	border: 1px solid #D4D4D4;
-	border-bottom: 1px solid #EFEFEF;
+    color: #444;
+    background: #EFEFEF;
+    border: 1px solid #D4D4D4;
+    border-bottom: 1px solid #EFEFEF;
 }
 .box {
-	display: none;
-	border: 1px solid #D4D4D4;
+    display: none;
+    border: 1px solid #D4D4D4;
     border-width: 0 1px 1px;
-	background: #EFEFEF;
-	padding: 0 12px;
+    background: #EFEFEF;
+    padding: 0 12px;
 }
 .box.visible {
-	display: block;
+    display: block;
 }
 .table_day{
     border: 1px solid #111;
@@ -468,6 +468,9 @@ ul.tabs {
 
 .popup_anch{
     margin: 0 0 0 71.5%;
+}
+.mes{
+    margin: 0 0 0 0;
 }
 .popup_anch a{
     text-decoration: none;
@@ -501,9 +504,10 @@ ul.tabs {
 }
 <<<<<<< HEAD
 .popup_close{
-    float:right;
-    width:15px;
+    position: absolute;
+    width: 15px;
     height:14px;
+    margin-left: 10px;
     margin: 10px 20px 0 0;
 }
 .popup_body{
@@ -546,55 +550,55 @@ ul.tabs {
     padding-left: 5px;
 }
 ul.tabs {
-	height: 28px;
-	line-height: 25px;
-	list-style: none;
-	border-bottom: 1px solid #DDD;
-	background: #FFF;
+    height: 28px;
+    line-height: 25px;
+    list-style: none;
+    border-bottom: 1px solid #DDD;
+    background: #FFF;
 }
 .tabs li {
-	float: left;
-	display: inline;
-	margin: 0 1px -1px 0;
-	padding: 0 13px 1px;
-	color: #777;
-	cursor: pointer;
-	background: #F9F9F9;
-	border: 1px solid #E4E4E4;
-	border-bottom: 1px solid #F9F9F9;
-	position: relative;
+    float: left;
+    display: inline;
+    margin: 0 1px -1px 0;
+    padding: 0 13px 1px;
+    color: #777;
+    cursor: pointer;
+    background: #F9F9F9;
+    border: 1px solid #E4E4E4;
+    border-bottom: 1px solid #F9F9F9;
+    position: relative;
 }
 .tabs li:hover, .tabs li:hover {
-	color: #F70;
-	padding: 0 13px;
-	background: #FFFFDF;
-	border: 1px solid #FFCA95;
+    color: #F70;
+    padding: 0 13px;
+    background: #FFFFDF;
+    border: 1px solid #FFCA95;
 }
 .tabs li.current {
-	color: #444;
-	background: #EFEFEF;
-	padding: 0 13px 2px;
-	border: 1px solid #D4D4D4;
-	border-bottom: 1px solid #EFEFEF;
+    color: #444;
+    background: #EFEFEF;
+    padding: 0 13px 2px;
+    border: 1px solid #D4D4D4;
+    border-bottom: 1px solid #EFEFEF;
 }
 .box {
-	display: none;
-	border: 1px solid #D4D4D4;
+    display: none;
+    border: 1px solid #D4D4D4;
     border-width: 0 1px 1px;
-	background: #EFEFEF;
-	padding: 0 12px;
+    background: #EFEFEF;
+    padding: 0 12px;
 }
 .box.visible {
-	display: block;
+    display: block;
 }
 .mes_author{
     padding: 10px 0 10px 5px;
-    font-size: 90%;
+    font-size: 80%;
     width: 30%;
 }
 .message{
-    padding: 10px 0 10px 10px;
-    font-size: 90%;
+    padding: 10px 0 10px 5px;
+    font-size:75%;
 }
 .mes_option{
     width: 5%;
